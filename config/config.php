@@ -23,15 +23,15 @@ define("OG_IMAGE", "https://tuqio.independentkenyawomenawards.com/assets/images/
 // ─── v1-backend API ────────────────────────────────────────────────────────
 define("API_BASE",    $isLocal
     ? "http://localhost:8000"
-    : "https://tuqio.independentkenyawomenawards.com");
+    : "https://platform.independentkenyawomenawards.com");
 define("API_STORAGE", $isLocal
     ? "http://localhost:8000/storage/"
-    : "https://tuqio.independentkenyawomenawards.com/storage/");
+    : "https://platform.independentkenyawomenawards.com/storage/");
 
 // ─── Admin (organizer platform) ────────────────────────────────────────────
 define("ADMIN_URL",   $isLocal
     ? "http://localhost:8000/login"
-    : "https://tuqio.independentkenyawomenawards.com/platform/login");
+    : "https://platform.independentkenyawomenawards.com/login");
 
 // ─── Tuqio branding ────────────────────────────────────────────────────────
 define("TUQIO_NAVY",  "#1e1548");
