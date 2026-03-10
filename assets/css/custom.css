@@ -1,0 +1,386 @@
+/* ========================================
+   Tuqio Hub — Brand Override
+   Primary:  Navy  #1e1548
+   Accent:   Red   #ed1c24
+   ======================================== */
+
+/* ── Services Section ── */
+.services-section { padding: 80px 0; background: #f5f5f5; }
+.service-card {
+    position: relative; border-radius: 10px; overflow: hidden;
+    margin-bottom: 30px; min-height: 260px;
+    background-size: cover; background-position: center;
+    cursor: pointer;
+}
+.service-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(21,16,46,.52), rgba(21,16,46,.88));
+    transition: background .35s;
+}
+.service-card:hover::after {
+    background: linear-gradient(to bottom, rgba(21,16,46,.3), rgba(21,16,46,.65));
+}
+.service-card .service-content {
+    position: relative; z-index: 2;
+    padding: 30px 28px; color: #fff;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; min-height: 260px;
+}
+.service-card .service-icon { font-size: 2.2rem; margin-bottom: 12px; color: #ed1c24; }
+.service-card h4 { color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
+.service-card p { font-size: .86rem; color: rgba(255,255,255,.85); margin: 0; line-height: 1.55; }
+.svc-bg-1 { background-image: url("../images/services/event-ticketing.webp"); }
+.svc-bg-2 { background-image: url("../images/services/event-summit.webp"); }
+.svc-bg-3 { background-image: url("../images/services/graphics-design.webp"); }
+.svc-bg-4 { background-image: url("../images/services/event-outsourcing.jpg"); }
+.svc-bg-5 { background-image: url("../images/services/live-polls.png"); }
+.svc-bg-6 { background-image: url("../images/services/event-photography.webp"); }
+
+/* ── Theme button style-one (primary = red) ── */
+.btn-style-one { background: #ed1c24; }
+.btn-style-one:hover { background: #c41820; }
+
+/* ── Theme button style-two (secondary = navy) ── */
+.btn-style-two { background: #1e1548; }
+.btn-style-two:hover { background: #2d1f6b; }
+
+/* ── Links ── */
+a { color: #ed1c24; }
+a:hover { color: #c41820; }
+
+/* ── Section headings accent ── */
+.sec-title .title { color: #ed1c24; }
+.sec-title h2 em  { color: #ed1c24; font-style: normal; }
+
+/* ── Page title bg + breadcrumb ── */
+.page-title         { background-color: #1e1548; }
+.page-breadcrumb li a { color: #fff; opacity: .7; }
+.page-breadcrumb li a:hover { opacity: 1; }
+
+/* ── Header background (override IKWA #3d1010) ── */
+.main-header:before { background-color: #1e1548 !important; }
+
+/* ── Header-top social icons ── */
+.social-icon-three li a { background-color: rgba(255,255,255,0.15); color: #fff; }
+.social-icon-three li a:hover { background-color: #ed1c24; color: #fff; }
+
+/* ── Header / Navbar ── */
+.main-header .main-menu .navigation > li > a:hover,
+.main-header .main-menu .navigation > li.current > a,
+.main-header .main-menu .navigation > li.current-menu-item > a {
+    color: #ed1c24 !important;
+}
+
+/* ── Sticky header ── */
+.sticky-header .main-menu .navigation > li > a:hover,
+.sticky-header .main-menu .navigation > li.current > a {
+    color: #ed1c24 !important;
+}
+
+/* ── Icon accent colour ── */
+.icon-box .icon, .feature-block .icon-box span,
+i.fa, i.fas, i.fab, i.far {
+    /* Don't override globally — only specific selectors */
+}
+.tuqio-icon-red   { color: #ed1c24 !important; }
+.tuqio-icon-navy  { color: #1e1548 !important; }
+
+/* ── Date badge on event cards ── */
+.event-block .date-badge,
+.date-badge {
+    background: #ed1c24;
+    box-shadow: 0 4px 12px rgba(237,28,36,0.4);
+}
+
+/* ── Voting badge ── */
+.voting-badge { background: #1e1548; }
+
+/* ── Vote bars ── */
+.vote-bar-fill {
+    background: linear-gradient(90deg, #ed1c24, #1e1548);
+}
+
+/* ── CTA / gradient blocks ── */
+.cta-gradient {
+    background: linear-gradient(135deg, #1e1548, #ed1c24);
+}
+
+/* ── Sidebar active category ── */
+.cat-nav .nav-link.active {
+    background: #ed1c24;
+    border-color: #ed1c24;
+}
+.cat-nav .nav-link:hover:not(.active) {
+    background: #fff0f0;
+    border-color: #ed1c24;
+    color: #ed1c24;
+}
+.cat-nav .nav-link .count-badge {
+    background: rgba(237,28,36,0.12);
+    color: #ed1c24;
+}
+
+/* ── Footer ── */
+.main-footer { background-color: #15102e; }
+.main-footer .footer-title { color: #ed1c24; }
+
+/* ── Countdown widget ── */
+.countdown-widget {
+    background: linear-gradient(135deg, #15102e, #ed1c24);
+}
+
+/* ── Preloader ── */
+.preloader { background-color: #1e1548; }
+
+/* Override IKWA preloader dot colors with Tuqio brand */
+#loading { background-color: #fff; }
+#loading .object { background: #ed1c24; }
+#loading #second_object { background: #1e1548; }
+#loading #third_object  { background: #ed1c24; opacity: .6; }
+
+/* ── Scroll to top ── */
+.scroll-to-top { background: #ed1c24; }
+.scroll-to-top:hover { background: #c41820; }
+
+/* ── Page title hero text ── */
+.page-title h1         { color: #fff; }
+.page-title .anim-icons .icon { border-color: rgba(255,255,255,0.15); }
+
+/* ── Nav logo area ── */
+.main-header .logo-box a { display: inline-block; }
+
+/* ── Sticky header: show CTA button on desktop only ── */
+@media only screen and (min-width: 1024px) {
+    .sticky-header .outer-box { display: flex !important; align-items: center; gap: 10px; }
+    .sticky-header .outer-box .search-box-btn,
+    .sticky-header .outer-box .nav-toggler { display: none !important; }
+}
+
+/* ── Banner: full viewport height on mobile ── */
+@media only screen and (max-width: 767px) {
+    .banner-section .slide-item {
+        min-height: 100vh;
+        padding: 120px 0 80px;
+        display: flex;
+        align-items: center;
+    }
+    .banner-section .slide-item .auto-container {
+        width: 100%;
+    }
+}
+
+/* ── Slide background images ── */
+.slide-bg-1 { background-image: url("../slides/slide-1.webp"); }
+.slide-bg-2 { background-image: url("../slides/slide-2.webp"); }
+.slide-bg-3 { background-image: url("../slides/slide-3.webp"); }
+
+/* ── Reduce banner overlay opacity so images show through ── */
+.banner-section .slide-item:before { opacity: 0.55 !important; }
+
+/* ── Event cards (Featured Events) — equal height ── */
+.news-section .row { display: flex; flex-wrap: wrap; }
+.news-block { display: flex; flex-direction: column; }
+.news-block .inner-box { display: flex; flex-direction: column; height: 100%; }
+.news-block .lower-content { flex: 1; display: flex; flex-direction: column; }
+.news-block .lower-content .btn-box { margin-top: auto; padding-top: 16px; }
+.event-card-img { width: 100%; height: 230px; object-fit: cover; display: block; }
+.news-block .lower-content .event-card-btn { margin-top: auto; }
+.news-block .lower-content .text { color: #666; font-size: 0.9rem; line-height: 1.75; margin-bottom: 0; -webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ── Event phase tag colours ── */
+.event-phase-tag { text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.5px; }
+.event-phase-voting     { background: #ed1c24 !important; }
+.event-phase-on_sale    { background: #1e1548 !important; }
+.event-phase-nomination { background: #e07a2d !important; }
+.event-phase-upcoming   { background: #28a745 !important; }
+
+/* ── Shared section wrapper ── */
+.section-light { padding: 70px 0; background: #f9fafb; }
+
+/* ── Empty state ── */
+.empty-state { padding: 80px 0; }
+.empty-state .empty-icon { font-size: 3rem; color: #ed1c24; opacity: .3; }
+.empty-state h4 { margin-top: 20px; color: #1e1548; }
+
+/* ── Page title small h1 (blog-single) ── */
+.page-title h1.title-sm { font-size: 1.8rem; }
+
+/* ── Sidebar page container ── */
+.sidebar-page-padded { padding: 60px 0; }
+
+/* ── Blog meta row ── */
+.blog-meta-row { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid #f0f0f0; }
+.blog-meta-item { font-size: .82rem; color: #888; }
+.blog-meta-icon { color: #ed1c24; margin-right: 4px; }
+.blog-cat-pill { font-size: .75rem; background: #ed1c24; color: #fff; padding: 3px 10px; border-radius: 20px; font-weight: 700; }
+
+/* ── Blog read-more link ── */
+.blog-readmore { font-size: .82rem; color: #ed1c24; font-weight: 700; text-decoration: none; }
+.blog-readmore:hover { color: #c41820; }
+
+/* ── Blog share row ── */
+.blog-share-row { margin-top: 36px; padding-top: 20px; border-top: 1px solid #f0f0f0; }
+.blog-share-label { font-size: .82rem; color: #888; font-weight: 600; }
+.share-btn { display: inline-flex; width: 32px; height: 32px; border-radius: 50%; color: #fff; align-items: center; justify-content: center; font-size: .8rem; text-decoration: none; margin: 0 3px; }
+.share-btn:hover { opacity: .85; color: #fff; }
+.share-btn-fb { background: #1877f2; }
+.share-btn-tw { background: #1da1f2; }
+.share-btn-li { background: #0a66c2; }
+.share-btn-wa { background: #25d366; }
+
+/* ── Related card date ── */
+.rc-date { font-size: .72rem; color: #aaa; margin-bottom: 6px; }
+.rc-date-icon { color: #ed1c24; margin-right: 3px; }
+
+/* ── Poll homepage inline styles ── */
+.poll-col { margin-bottom: 30px; }
+.schedule-block-two { margin-bottom: 10px; }
+.schedule-block-two .inner-box { padding: 12px 18px; }
+.poll-option-label { display: flex; align-items: center; gap: 10px; cursor: pointer; margin: 0; }
+.poll-option-text { flex: 1; }
+.poll-option-pct { font-size: 0.85rem; color: #999; }
+.poll-btn-box { margin-top: 14px; }
+.poll-feedback { display: none; margin-top: 10px; font-size: .9rem; }
+
+/* ── Polls page inline styles ── */
+.poll-option-img { width: 36px; height: 36px; border-radius: 4px; object-fit: cover; }
+.poll-option-span { flex-grow: 1; font-size: .9rem; color: #333; }
+.poll-result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.poll-result-text { font-size: .88rem; color: #333; display: flex; align-items: center; gap: 6px; }
+.poll-votes-count { color: #aaa; font-size: .72rem; }
+.poll-footer-info { font-size: .75rem; color: #aaa; margin-top: 14px; border-top: 1px solid #f0f0f0; padding-top: 10px; }
+
+/* ── News/blog thumbnail ── */
+.news-thumb-img { width: 100%; height: 220px; object-fit: cover; }
+
+/* ── Vote page ── */
+.vote-event-card {
+    background:#fff;border-radius:14px;overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,0.07);transition:transform .2s,box-shadow .2s;
+    height:100%;display:flex;flex-direction:column;
+}
+.vote-event-card:hover { transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,0.12); }
+.vote-event-card .card-banner {
+    position:relative;height:200px;overflow:hidden;
+}
+.vote-event-card .card-banner img {
+    width:100%;height:100%;object-fit:cover;transition:transform .4s;
+}
+.vote-event-card:hover .card-banner img { transform:scale(1.05); }
+.vote-event-card .card-banner .live-badge {
+    position:absolute;top:14px;left:14px;
+    background:#ed1c24;color:#fff;font-size:.72rem;font-weight:700;
+    letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;
+    display:flex;align-items:center;gap:6px;
+}
+.vote-event-card .card-banner .live-badge::before {
+    content:'';width:7px;height:7px;border-radius:50%;
+    background:#fff;animation:pulse-dot 1.2s infinite;
+}
+@keyframes pulse-dot {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%       { opacity:.4; transform:scale(.6); }
+}
+.vote-event-card .card-body-inner { padding:22px 24px;flex:1;display:flex;flex-direction:column; }
+.vote-event-card h5 { font-weight:800;color:#1e1548;font-size:1.05rem;margin-bottom:10px; }
+.vote-event-card .meta { font-size:.8rem;color:#999;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px; }
+.vote-event-card .meta i { color:#ed1c24;margin-right:4px; }
+.vote-event-card .cat-pill {
+    display:inline-block;font-size:.72rem;font-weight:700;
+    background:#f0f2ff;color:#1e1548;padding:3px 10px;border-radius:20px;margin-bottom:10px;
+}
+.vote-event-card .desc { font-size:.85rem;color:#666;line-height:1.6;margin-bottom:18px;flex:1; }
+.countdown-mini { display:flex;gap:10px;margin-bottom:18px; }
+.countdown-mini .cd-box {
+    text-align:center;background:#f9fafb;border-radius:8px;padding:8px 12px;min-width:56px;
+}
+.countdown-mini .cd-box .num { font-size:1.3rem;font-weight:800;color:#1e1548;display:block; }
+.countdown-mini .cd-box .lbl { font-size:.65rem;color:#999;text-transform:uppercase;letter-spacing:.5px; }
+
+/* ── Event Detail page ── */
+.voting-strip {
+    background: linear-gradient(90deg, #15102e, #ed1c24);
+    padding: 18px 0; color: #fff; text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+}
+.voting-strip.hidden { display: none; }
+.event-tabs .nav-link { color: #555; font-weight: 600; padding: 12px 20px; border-bottom: 3px solid transparent; border-radius: 0; }
+.event-tabs .nav-link.active { color: #ed1c24; border-bottom-color: #ed1c24; background: transparent; }
+.event-tabs .nav-link:hover { color: #ed1c24; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.gallery-grid a { display: block; border-radius: 8px; overflow: hidden; }
+.gallery-grid img { width: 100%; height: 140px; object-fit: cover; transition: transform .3s; display: block; }
+.gallery-grid a:hover img { transform: scale(1.07); }
+.schedule-day { margin-bottom: 36px; }
+.schedule-day-header-custom { background: #f8f9fa; border-left: 4px solid #ed1c24; padding: 12px 18px; border-radius: 0 8px 8px 0; margin-bottom: 16px; }
+.schedule-day-header-custom h6 { margin: 0; font-weight: 700; color: #1e1548; }
+.schedule-item { display: flex; gap: 16px; padding: 16px; border: 1px solid #f0f0f0; border-radius: 10px; margin-bottom: 10px; transition: box-shadow .2s; }
+.schedule-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.schedule-item .time-col { min-width: 68px; text-align: right; flex-shrink: 0; }
+.schedule-item .time-start { font-weight: 700; font-size: .88rem; color: #1e1548; }
+.schedule-item .time-end   { font-size: .75rem; color: #aaa; }
+.schedule-item .dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .78rem; background: rgba(237,28,36,0.12); color: #ed1c24; }
+.schedule-item .content-col { flex: 1; }
+.schedule-item .session-title { font-weight: 700; font-size: .95rem; color: #1e1548; margin-bottom: 3px; }
+.schedule-item .session-meta { font-size: .78rem; color: #888; }
+.schedule-item .highlighted { background: linear-gradient(90deg, rgba(237,28,36,0.06), transparent); border-left: 3px solid #ed1c24; }
+.speaker-card { text-align: center; padding: 24px 16px; border-radius: 12px; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.06); height: 100%; }
+.speaker-card img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; display: block; border: 3px solid #f0f0f0; }
+.speaker-card .speaker-initials { width: 90px; height: 90px; border-radius: 50%; background: #1e1548; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 800; margin: 0 auto 14px; }
+.speaker-card h6 { font-weight: 700; color: #1e1548; margin-bottom: 4px; font-size: .95rem; }
+.speaker-card .sp-title { font-size: .8rem; color: #ed1c24; margin-bottom: 4px; }
+.speaker-card .sp-company { font-size: .78rem; color: #888; }
+.tier-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #aaa; margin-bottom: 16px; }
+.sponsor-logo { border: 1px solid #f0f0f0; border-radius: 8px; padding: 14px 20px; display: flex; align-items: center; justify-content: center; height: 80px; transition: box-shadow .2s; }
+.sponsor-logo:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.sponsor-logo img { max-height: 50px; max-width: 120px; object-fit: contain; }
+.sponsor-logo .sp-name { font-weight: 700; font-size: .9rem; color: #1e1548; }
+.nominee-mini { background: #fff; border-radius: 10px; padding: 20px 14px; text-align: center; box-shadow: 0 3px 14px rgba(0,0,0,0.06); }
+.nominee-mini .nom-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 12px; display: block; }
+.nominee-mini .nom-initials { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; color: #fff; margin: 0 auto 12px; }
+.nominee-mini h6 { font-size: .88rem; color: #1e1548; font-weight: 700; margin-bottom: 4px; }
+.ticket-type { border: 2px solid #eee; border-radius: 10px; padding: 20px; margin-bottom: 14px; transition: border-color .2s, box-shadow .2s; }
+.ticket-type:hover { border-color: #ed1c24; box-shadow: 0 4px 16px rgba(237,28,36,0.1); }
+.ticket-type .ticket-name { font-weight: 700; color: #1e1548; font-size: 1rem; }
+.ticket-type .ticket-price { font-size: 1.4rem; font-weight: 900; color: #ed1c24; }
+.ticket-type .ticket-desc { font-size: .82rem; color: #888; margin-top: 4px; }
+.event-info-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); margin-bottom: 24px; }
+.event-info-card .info-row { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+.event-info-card .info-icon { color: #ed1c24; font-size: 1rem; min-width: 18px; margin-top: 2px; }
+.event-info-card .info-label { font-size: .72rem; color: #aaa; display: block; text-transform: uppercase; letter-spacing: 1px; }
+.event-info-card .info-value { font-size: .9rem; color: #1e1548; font-weight: 600; }
+
+/* ── Event Lifecycle Stepper ── */
+.event-stepper { background: #fff; border-bottom: 1px solid #f0f0f0; padding: 20px 0; }
+.stepper-inner { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+.stepper-step { display: flex; align-items: center; }
+.stepper-item { display: flex; flex-direction: column; align-items: center; min-width: 80px; padding: 0 6px; }
+.stepper-circle { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; border: 2px solid #e0e0e0; background: #fff; color: #bbb; }
+.stepper-circle.done { background: #10b981; border-color: #10b981; color: #fff; }
+.stepper-circle.active { background: #ed1c24; border-color: #ed1c24; color: #fff; box-shadow: 0 0 0 4px rgba(237,28,36,.15); }
+.stepper-circle.locked { background: #f5f5f5; border-color: #e0e0e0; color: #ccc; }
+.stepper-label { font-size: .62rem; color: #bbb; text-align: center; margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; line-height: 1.3; }
+.stepper-label.active { color: #ed1c24; }
+.stepper-label.done { color: #10b981; }
+.stepper-line { width: 36px; height: 2px; background: #e0e0e0; flex-shrink: 0; }
+.stepper-line.done { background: #10b981; }
+@media (max-width: 576px) { .stepper-item { min-width: 52px; } .stepper-line { width: 18px; } .stepper-label { font-size: .52rem; } }
+
+/* ── Locked CTA card ── */
+.locked-cta { background: #f8f8f8; border: 1px dashed #ddd; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 24px; color: #aaa; }
+.locked-cta i { font-size: 1.4rem; margin-bottom: 8px; display: block; }
+.locked-cta .locked-title { font-size: .85rem; font-weight: 700; color: #999; margin-bottom: 4px; }
+.locked-cta .locked-sub { font-size: .78rem; color: #bbb; }
+
+/* ── Nominee category card (for pre-voting display) ── */
+.nom-category-card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 3px 14px rgba(0,0,0,.06); margin-bottom: 20px; }
+.nom-category-card .cat-name { font-weight: 700; color: #1e1548; font-size: 1rem; margin-bottom: 4px; }
+.nom-category-card .cat-desc { font-size: .82rem; color: #888; margin-bottom: 12px; }
+.nom-category-card .nominee-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.nom-category-card .chip { display: inline-flex; align-items: center; gap: 6px; background: #f5f5f5; border-radius: 20px; padding: 4px 12px; font-size: .78rem; color: #555; }
+.nom-category-card .chip img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+.nom-phase-banner { border-radius: 10px; padding: 20px 24px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px; }
+.nom-phase-banner.nominations { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.3); }
+.nom-phase-banner.review       { background: rgba(139,92,246,.08); border: 1px solid rgba(139,92,246,.3); }
+.nom-phase-banner.voting-open  { background: rgba(237,28,36,.07); border: 1px solid rgba(237,28,36,.2); }
+.nom-phase-banner.voting-closed{ background: rgba(108,117,125,.07); border: 1px solid rgba(108,117,125,.2); }
