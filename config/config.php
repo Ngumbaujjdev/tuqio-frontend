@@ -1,14 +1,19 @@
 <?php
 ob_start();
 
-$isLocal = str_contains($_SERVER['HTTP_HOST'] ?? '', 'localhost');
+$_host   = $_SERVER['HTTP_HOST'] ?? '';
+$isLocal = str_contains($_host, 'localhost');
+$isNew   = str_contains($_host, 'tuqiohub.africa');
+// $isOld = everything else (independentkenyawomenawards.com)
 
 // ─── Site ──────────────────────────────────────────────────────────────────
-define("SITE_URL",    $isLocal
-    ? "http://localhost/tuqio-frontend"
-    : "https://tuqiohub.africa");
+define("SITE_URL", match(true) {
+    $isLocal => "http://localhost/tuqio-frontend",
+    $isNew   => "https://tuqiohub.africa",
+    default  => "https://tuqio.independentkenyawomenawards.com",
+});
 define("SITE_NAME",   "Tuqio Hub");
-define("ADMIN_EMAIL", "tuqio@tuqiohub.africa");
+define("ADMIN_EMAIL", $isNew ? "tuqio@tuqiohub.africa" : "tuqiohub@independentkenyawomenawards.com");
 define("SITE_PHONE",  "+254757140682");
 
 // ─── Social ────────────────────────────────────────────────────────────────
@@ -18,20 +23,20 @@ define("SOCIAL_TWITTER",   "https://twitter.com/tuqiohub");
 define("SOCIAL_LINKEDIN",  "https://www.linkedin.com/company/tuqiohub");
 
 // ─── OG image ──────────────────────────────────────────────────────────────
-define("OG_IMAGE", "https://tuqiohub.africa/assets/images/og/tuqio-og.webp");
+define("OG_IMAGE", $isNew
+    ? "https://tuqiohub.africa/assets/images/og/tuqio-og.webp"
+    : "https://tuqio.independentkenyawomenawards.com/assets/images/og/tuqio-og.webp");
 
 // ─── v1-backend API ────────────────────────────────────────────────────────
-define("API_BASE",    $isLocal
-    ? "http://localhost:8000"
-    : "https://platform.tuqiohub.africa");
-define("API_STORAGE", $isLocal
-    ? "http://localhost:8000/storage/"
-    : "https://platform.tuqiohub.africa/storage/");
+define("API_BASE", match(true) {
+    $isLocal => "http://localhost:8000",
+    $isNew   => "https://platform.tuqiohub.africa",
+    default  => "https://platform.independentkenyawomenawards.com",
+});
+define("API_STORAGE", API_BASE . "/storage/");
 
 // ─── Admin (organizer platform) ────────────────────────────────────────────
-define("ADMIN_URL",   $isLocal
-    ? "http://localhost:8000/login"
-    : "https://platform.tuqiohub.africa/login");
+define("ADMIN_URL", API_BASE . "/login");
 
 // ─── Tuqio branding ────────────────────────────────────────────────────────
 define("TUQIO_NAVY",  "#1e1548");
