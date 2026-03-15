@@ -6,9 +6,9 @@ $isLocal = str_contains($_SERVER['HTTP_HOST'] ?? '', 'localhost');
 // ─── Site ──────────────────────────────────────────────────────────────────
 define("SITE_URL",    $isLocal
     ? "http://localhost/tuqio-frontend"
-    : "https://tuqio.independentkenyawomenawards.com");
+    : "https://tuqiohub.africa");
 define("SITE_NAME",   "Tuqio Hub");
-define("ADMIN_EMAIL", "tuqio@independentkenyawomenawards.com");
+define("ADMIN_EMAIL", "tuqio@tuqiohub.africa");
 define("SITE_PHONE",  "+254757140682");
 
 // ─── Social ────────────────────────────────────────────────────────────────
@@ -18,20 +18,20 @@ define("SOCIAL_TWITTER",   "https://twitter.com/tuqiohub");
 define("SOCIAL_LINKEDIN",  "https://www.linkedin.com/company/tuqiohub");
 
 // ─── OG image ──────────────────────────────────────────────────────────────
-define("OG_IMAGE", "https://tuqio.independentkenyawomenawards.com/assets/images/og/tuqio-og.webp");
+define("OG_IMAGE", "https://tuqiohub.africa/assets/images/og/tuqio-og.webp");
 
 // ─── v1-backend API ────────────────────────────────────────────────────────
 define("API_BASE",    $isLocal
     ? "http://localhost:8000"
-    : "https://platform.independentkenyawomenawards.com");
+    : "https://platform.tuqiohub.africa");
 define("API_STORAGE", $isLocal
     ? "http://localhost:8000/storage/"
-    : "https://platform.independentkenyawomenawards.com/storage/");
+    : "https://platform.tuqiohub.africa/storage/");
 
 // ─── Admin (organizer platform) ────────────────────────────────────────────
 define("ADMIN_URL",   $isLocal
     ? "http://localhost:8000/login"
-    : "https://platform.independentkenyawomenawards.com/login");
+    : "https://platform.tuqiohub.africa/login");
 
 // ─── Tuqio branding ────────────────────────────────────────────────────────
 define("TUQIO_NAVY",  "#1e1548");
