@@ -267,6 +267,22 @@ $venue = implode(', ', array_filter([$event['venue_name'] ?? '', $event['venue_c
                         <div class="os-empty">Select tickets above to continue</div>
                     </div>
 
+                    <!-- Payment method selector -->
+                    <div style="margin-bottom:14px;">
+                        <div style="font-size:.8rem;font-weight:700;color:#1e1548;margin-bottom:8px;">Pay with</div>
+                        <div style="display:flex;gap:8px;">
+                            <label id="pm-mpesa" onclick="Checkout.setPayMethod('mpesa')" style="flex:1;display:flex;align-items:center;gap:6px;padding:8px 10px;border:2px solid #ed1c24;border-radius:8px;cursor:pointer;background:#fff8f8;font-size:.78rem;font-weight:700;color:#1e1548;">
+                                <input type="radio" name="pay_method" value="mpesa" checked style="accent-color:#ed1c24;"> M-Pesa
+                            </label>
+                            <label id="pm-airtel" onclick="Checkout.setPayMethod('airtel_money')" style="flex:1;display:flex;align-items:center;gap:6px;padding:8px 10px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;background:#fff;font-size:.78rem;font-weight:700;color:#1e1548;">
+                                <input type="radio" name="pay_method" value="airtel_money" style="accent-color:#ef4444;"> Airtel Money
+                            </label>
+                            <label id="pm-card" onclick="Checkout.setPayMethod('card')" style="flex:1;display:flex;align-items:center;gap:6px;padding:8px 10px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;background:#fff;font-size:.78rem;font-weight:700;color:#1e1548;">
+                                <input type="radio" name="pay_method" value="card" style="accent-color:#1e1548;"> Card
+                            </label>
+                        </div>
+                    </div>
+
                     <button class="pay-btn" id="payBtn" onclick="Checkout.pay()" disabled>
                         <i class="fas fa-lock" style="margin-right:8px;"></i>
                         Pay with Paystack
@@ -330,11 +346,12 @@ const EVENT_SLUG = <?= json_encode($slug) ?>;
 const TICKET_TYPES = <?= json_encode($ticketTypes) ?>;
 
 window.Checkout = (function () {
-    let quantities = {};   // {ticket_type_id: qty}
-    let promoCode  = '';
-    let promoDiscount = 0; // absolute KES amount
+    let quantities   = {};   // {ticket_type_id: qty}
+    let promoCode    = '';
+    let promoDiscount = 0;
     let promoPercent  = 0;
     let promoApplied  = false;
+    let payMethod    = 'mpesa';
 
     function getType(id) {
         return TICKET_TYPES.find(t => t.id == id);
@@ -477,7 +494,7 @@ window.Checkout = (function () {
             .filter(([, q]) => q > 0)
             .map(([id, quantity]) => ({ ticket_type_id: parseInt(id), quantity }));
 
-        const payload = { items, buyer_name: name, buyer_email: email };
+        const payload = { items, buyer_name: name, buyer_email: email, payment_method: payMethod };
         if (phone) payload.buyer_phone = phone;
         if (promoCode) payload.promo_code = promoCode;
 
@@ -513,7 +530,18 @@ window.Checkout = (function () {
     function fmt(n) { return Number(n).toLocaleString('en-KE', {minimumFractionDigits:0, maximumFractionDigits:0}); }
     function escHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
-    return { incQty, decQty, applyPromo, pay };
+    function setPayMethod(method) {
+        payMethod = method;
+        const map = { mpesa: 'pm-mpesa', airtel_money: 'pm-airtel', card: 'pm-card' };
+        Object.entries(map).forEach(([m, id]) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.style.borderColor = (m === method) ? '#ed1c24' : '#e5e7eb';
+            el.style.background  = (m === method) ? '#fff8f8' : '#fff';
+        });
+    }
+
+    return { incQty, decQty, applyPromo, pay, setPayMethod };
 })();
 </script>
 </body>
