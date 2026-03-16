@@ -10,6 +10,10 @@ $nomEvents  = array_filter($allEvents, fn($e) => !empty($e['has_nominations']) |
 $selectedSlug  = $_GET['event'] ?? (count($nomEvents) === 1 ? (array_values($nomEvents)[0]['slug'] ?? '') : '');
 $selectedCatId = (int)($_GET['category'] ?? 0);
 $selectedCat   = null;
+$selectedEvent = null;
+foreach ($nomEvents as $ev) {
+    if ($ev['slug'] === $selectedSlug) { $selectedEvent = $ev; break; }
+}
 
 // Fetch ONLY public-nomination categories for selected event
 $categories = [];
@@ -60,7 +64,7 @@ if ($selectedSlug) {
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.facebook.com/share/p/1DJyLwtvqf/","https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
@@ -76,6 +80,8 @@ if ($selectedSlug) {
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/responsive.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/custom.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
 <link rel="icon" type="image/png" href="<?= SITE_URL ?>/assets/images/favicon/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="<?= SITE_URL ?>/assets/images/favicon/favicon.svg">
 <link rel="shortcut icon" href="<?= SITE_URL ?>/assets/images/favicon/favicon.ico">
@@ -95,6 +101,23 @@ if ($selectedSlug) {
 .section-divider { border-top:2px solid #f0f0f0;margin:28px 0;padding-top:24px; }
 .section-divider h6 { font-weight:700;color:#1e1548;margin-bottom:20px;font-size:.95rem;text-transform:uppercase;letter-spacing:1px; }
 .app-question-wrap { margin-bottom:16px; }
+.cat-card:hover { border-color:#1e1548 !important; background:#f7f5ff !important; }
+/* intl-tel-input */
+.nom-form-wrap .iti { width:100%; }
+.nom-form-wrap .iti input { border-radius:0 8px 8px 0; }
+.nom-form-wrap .iti--separate-dial-code .iti__selected-flag { background:#fafafa; border-right:1px solid #eee; border-radius:8px 0 0 8px; }
+/* Select2 country picker */
+.nom-form-wrap .select2-container { width:100% !important; }
+.nom-form-wrap .select2-container--default .select2-selection--single { height:44px;border:2px solid #eee;border-radius:8px;background:#fafafa; }
+.nom-form-wrap .select2-container--default .select2-selection--single .select2-selection__rendered { line-height:44px;padding-left:14px;font-size:.9rem;color:#333; }
+.nom-form-wrap .select2-container--default .select2-selection--single .select2-selection__placeholder { color:#aaa; }
+.nom-form-wrap .select2-container--default .select2-selection--single .select2-selection__arrow { height:42px;right:10px; }
+.nom-form-wrap .select2-container--default.select2-container--focus .select2-selection--single,
+.nom-form-wrap .select2-container--default.select2-container--open .select2-selection--single { border-color:#ed1c24;box-shadow:0 0 0 3px rgba(237,28,36,0.1);background:#fff; }
+.select2-dropdown { border:2px solid #ed1c24;border-radius:8px;font-size:.9rem;z-index:9999; }
+.select2-container--default .select2-results__option--highlighted[aria-selected] { background:#1e1548; }
+.select2-search--dropdown .select2-search__field { border:1px solid #eee;border-radius:6px;padding:6px 10px;font-size:.88rem; }
+.select2-container--default .select2-selection--single .select2-selection__clear { margin-right:24px;color:#aaa;font-size:1.1rem; }
 </style>
 </head>
 <body>
@@ -156,12 +179,28 @@ if ($selectedSlug) {
                         </button>
                     </div>
 
-                    <form method="post" action="" id="nom-form">
-                        <!-- Event select -->
+                    <form method="post" action="" id="nom-form" enctype="multipart/form-data">
+                        <!-- Event: badge when pre-selected, dropdown when not -->
+                        <?php if ($selectedSlug && $selectedEvent): ?>
+                        <div style="display:flex;align-items:center;gap:12px;background:#f0eeff;border-radius:10px;padding:12px 16px;margin-bottom:20px;">
+                            <div style="width:36px;height:36px;background:#1e1548;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-calendar-alt" style="color:#fff;font-size:.85rem;"></i>
+                            </div>
+                            <div style="flex:1;min-width:0;">
+                                <p style="margin:0;font-size:.68rem;color:#888;text-transform:uppercase;letter-spacing:.5px;font-weight:700;">Submitting for</p>
+                                <p style="margin:0;font-weight:800;color:#1e1548;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><?= htmlspecialchars($selectedEvent['name']) ?></p>
+                            </div>
+                            <?php if (count($nomEvents) > 1): ?>
+                            <a href="nominate.php" style="font-size:.78rem;color:#ed1c24;font-weight:700;white-space:nowrap;flex-shrink:0;text-decoration:none;">
+                                <i class="fas fa-exchange-alt me-1"></i>Change
+                            </a>
+                            <?php endif; ?>
+                        </div>
+                        <input type="hidden" name="event_slug" id="event_slug_select" value="<?= htmlspecialchars($selectedSlug) ?>" data-event-name="<?= htmlspecialchars($selectedEvent['name']) ?>">
+                        <?php else: ?>
                         <div class="mb-3">
                             <label>Event <span style="color:#ed1c24;">*</span></label>
-                            <select name="event_slug" id="event_slug_select" required
-                                    onchange="this.form.submit()">
+                            <select name="event_slug" id="event_slug_select" required onchange="this.form.submit()">
                                 <option value="">— Select Event —</option>
                                 <?php foreach ($nomEvents as $ev): ?>
                                 <option value="<?= htmlspecialchars($ev['slug']) ?>"
@@ -171,6 +210,7 @@ if ($selectedSlug) {
                                 <?php endforeach; ?>
                             </select>
                         </div>
+                        <?php endif; ?>
 
                         <?php if ($selectedSlug && empty($categories)): ?>
                         <!-- Event selected but no open nomination categories -->
@@ -183,37 +223,38 @@ if ($selectedSlug) {
 
                         <?php elseif (!empty($categories)): ?>
 
-                        <!-- Category -->
-                        <div class="mb-3">
+                        <!-- Category select (Select2) -->
+                        <div class="mb-4">
                             <label>Award Category <span style="color:#ed1c24;">*</span></label>
-                            <select name="category_id" id="category_select" required
-                                    onchange="NomForm.onCategoryChange(this.value)">
-                                <option value="">— Select Category —</option>
-                                <?php foreach ($categories as $cat): ?>
-                                <option value="<?= (int)$cat['id'] ?>"
-                                        data-type="<?= htmlspecialchars($cat['nomination_type'] ?? '') ?>"
+                            <select name="category_id" id="category_select">
+                                <option value="">— Select a category —</option>
+                                <?php foreach ($categories as $cat):
+                                    $cId   = (int)$cat['id'];
+                                    $cType = $cat['nomination_type'] ?? '';
+                                    $typeLabel = $cType === 'application_form' ? 'Full Application' : 'Nomination';
+                                ?>
+                                <option value="<?= $cId ?>"
+                                        data-type="<?= htmlspecialchars($cType) ?>"
                                         data-questions="<?= htmlspecialchars(json_encode($cat['nomination_questions'] ?? [])) ?>"
-                                        <?= ($selectedCatId === (int)$cat['id']) ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($cat['name']) ?>
-                                    <?php if (($cat['nomination_type'] ?? '') === 'application_form'): ?>
-                                    (Full Application)
-                                    <?php endif; ?>
+                                        <?= ($selectedCatId === $cId) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($cat['name']) ?> — <?= $typeLabel ?>
                                 </option>
                                 <?php endforeach; ?>
                             </select>
+                            <p id="cat-required-msg" style="display:none;font-size:.78rem;color:#ed1c24;margin-top:6px;"><i class="fas fa-exclamation-triangle me-1"></i>Please select a category.</p>
                         </div>
 
                         <!-- Application form questions (rendered dynamically by JS) -->
                         <div id="app-questions-container">
                         <?php if ($selectedCat && ($selectedCat['nomination_type'] ?? '') === 'application_form' && !empty($selectedCat['nomination_questions'])): ?>
-                            <?php foreach ($selectedCat['nomination_questions'] as $q): ?>
+                            <?php foreach ($selectedCat['nomination_questions'] as $qIdx => $q): ?>
                             <div class="app-question-wrap">
                                 <label>
                                     <?= htmlspecialchars($q['label']) ?>
                                     <?php if (!empty($q['required'])): ?><span style="color:#ed1c24;">*</span><?php endif; ?>
                                 </label>
                                 <?php
-                                $fname = 'app_' . htmlspecialchars($q['key']);
+                                $fname = 'app_q' . $qIdx;
                                 $fval  = htmlspecialchars($_POST[$fname] ?? '');
                                 if ($q['type'] === 'textarea'): ?>
                                 <textarea name="<?= $fname ?>" rows="4" <?= !empty($q['required']) ? 'required' : '' ?>><?= $fval ?></textarea>
@@ -243,6 +284,134 @@ if ($selectedSlug) {
                             <label id="nominee-name-label">Nominee's Full Name <span style="color:#ed1c24;">*</span></label>
                             <input type="text" name="nominee_name" id="nominee_name" value="<?= htmlspecialchars($_POST['nominee_name'] ?? '') ?>" placeholder="Full name of person you're nominating" required>
                         </div>
+
+                        <!-- Country -->
+                        <div class="mb-3" id="nominee-country-wrap">
+                            <label id="nominee-country-label">Nominee's Country <span style="color:#aaa;font-weight:400;font-size:.82rem;">(optional)</span></label>
+                            <select name="nominee_country" id="nominee_country">
+                                <option value="">🌍  Select Country</option>
+                                <optgroup label="── East Africa ──">
+                                    <option value="KE">🇰🇪  Kenya</option>
+                                    <option value="UG">🇺🇬  Uganda</option>
+                                    <option value="TZ">🇹🇿  Tanzania</option>
+                                    <option value="RW">🇷🇼  Rwanda</option>
+                                    <option value="BI">🇧🇮  Burundi</option>
+                                    <option value="SS">🇸🇸  South Sudan</option>
+                                    <option value="ET">🇪🇹  Ethiopia</option>
+                                    <option value="SO">🇸🇴  Somalia</option>
+                                    <option value="DJ">🇩🇯  Djibouti</option>
+                                    <option value="ER">🇪🇷  Eritrea</option>
+                                </optgroup>
+                                <optgroup label="── Rest of Africa ──">
+                                    <option value="NG">🇳🇬  Nigeria</option>
+                                    <option value="GH">🇬🇭  Ghana</option>
+                                    <option value="ZA">🇿🇦  South Africa</option>
+                                    <option value="EG">🇪🇬  Egypt</option>
+                                    <option value="MA">🇲🇦  Morocco</option>
+                                    <option value="SN">🇸🇳  Senegal</option>
+                                    <option value="CM">🇨🇲  Cameroon</option>
+                                    <option value="CI">🇨🇮  Côte d'Ivoire</option>
+                                    <option value="CD">🇨🇩  DR Congo</option>
+                                    <option value="ZM">🇿🇲  Zambia</option>
+                                    <option value="ZW">🇿🇼  Zimbabwe</option>
+                                    <option value="MZ">🇲🇿  Mozambique</option>
+                                    <option value="AO">🇦🇴  Angola</option>
+                                    <option value="MG">🇲🇬  Madagascar</option>
+                                    <option value="MU">🇲🇺  Mauritius</option>
+                                    <option value="TN">🇹🇳  Tunisia</option>
+                                    <option value="LY">🇱🇾  Libya</option>
+                                    <option value="SD">🇸🇩  Sudan</option>
+                                    <option value="DZ">🇩🇿  Algeria</option>
+                                    <option value="BW">🇧🇼  Botswana</option>
+                                    <option value="NA">🇳🇦  Namibia</option>
+                                    <option value="SZ">🇸🇿  Eswatini</option>
+                                    <option value="LS">🇱🇸  Lesotho</option>
+                                    <option value="MW">🇲🇼  Malawi</option>
+                                </optgroup>
+                                <optgroup label="── Europe ──">
+                                    <option value="GB">🇬🇧  United Kingdom</option>
+                                    <option value="DE">🇩🇪  Germany</option>
+                                    <option value="FR">🇫🇷  France</option>
+                                    <option value="NL">🇳🇱  Netherlands</option>
+                                    <option value="SE">🇸🇪  Sweden</option>
+                                    <option value="NO">🇳🇴  Norway</option>
+                                    <option value="DK">🇩🇰  Denmark</option>
+                                    <option value="IT">🇮🇹  Italy</option>
+                                    <option value="ES">🇪🇸  Spain</option>
+                                    <option value="PT">🇵🇹  Portugal</option>
+                                    <option value="BE">🇧🇪  Belgium</option>
+                                    <option value="CH">🇨🇭  Switzerland</option>
+                                    <option value="AT">🇦🇹  Austria</option>
+                                    <option value="FI">🇫🇮  Finland</option>
+                                    <option value="IE">🇮🇪  Ireland</option>
+                                    <option value="PL">🇵🇱  Poland</option>
+                                </optgroup>
+                                <optgroup label="── Americas ──">
+                                    <option value="US">🇺🇸  United States</option>
+                                    <option value="CA">🇨🇦  Canada</option>
+                                    <option value="BR">🇧🇷  Brazil</option>
+                                    <option value="MX">🇲🇽  Mexico</option>
+                                    <option value="AR">🇦🇷  Argentina</option>
+                                    <option value="CO">🇨🇴  Colombia</option>
+                                    <option value="JM">🇯🇲  Jamaica</option>
+                                    <option value="TT">🇹🇹  Trinidad &amp; Tobago</option>
+                                </optgroup>
+                                <optgroup label="── Asia &amp; Middle East ──">
+                                    <option value="IN">🇮🇳  India</option>
+                                    <option value="CN">🇨🇳  China</option>
+                                    <option value="JP">🇯🇵  Japan</option>
+                                    <option value="AE">🇦🇪  UAE</option>
+                                    <option value="SA">🇸🇦  Saudi Arabia</option>
+                                    <option value="QA">🇶🇦  Qatar</option>
+                                    <option value="SG">🇸🇬  Singapore</option>
+                                    <option value="MY">🇲🇾  Malaysia</option>
+                                    <option value="PK">🇵🇰  Pakistan</option>
+                                    <option value="BD">🇧🇩  Bangladesh</option>
+                                    <option value="PH">🇵🇭  Philippines</option>
+                                    <option value="IL">🇮🇱  Israel</option>
+                                    <option value="TR">🇹🇷  Turkey</option>
+                                </optgroup>
+                                <optgroup label="── Oceania ──">
+                                    <option value="AU">🇦🇺  Australia</option>
+                                    <option value="NZ">🇳🇿  New Zealand</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- Photo dropzone -->
+                        <div class="mb-4" id="nominee-photo-wrap">
+                            <label id="nominee-photo-label" style="margin-bottom:8px;">Nominee's Photo <span style="color:#aaa;font-weight:400;font-size:.82rem;">(optional · JPG / PNG / WebP · max 2 MB)</span></label>
+                            <input type="file" name="nominee_photo" id="nominee_photo" accept="image/jpeg,image/png,image/webp" style="display:none;">
+                            <div id="photo-dropzone"
+                                 onclick="document.getElementById('nominee_photo').click()"
+                                 style="border:2px dashed #ddd;border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;background:#fafafa;transition:border-color .2s,background .2s;position:relative;">
+                                <!-- Empty state -->
+                                <div id="photo-empty-state">
+                                    <div style="width:60px;height:60px;border-radius:50%;background:#f0eeff;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+                                        <i class="fas fa-camera" style="font-size:1.4rem;color:#1e1548;opacity:.6;"></i>
+                                    </div>
+                                    <p style="margin:0 0 4px;font-weight:700;font-size:.9rem;color:#333;">Click to upload or drag &amp; drop</p>
+                                    <p style="margin:0;font-size:.8rem;color:#aaa;">JPG, PNG or WebP</p>
+                                </div>
+                                <!-- Preview state (hidden until file chosen) -->
+                                <div id="photo-preview-state" style="display:none;align-items:center;gap:16px;justify-content:center;">
+                                    <img id="photo-preview-img" src="" alt="Preview"
+                                         style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #ede9f6;flex-shrink:0;">
+                                    <div style="text-align:left;">
+                                        <p id="photo-preview-name" style="margin:0 0 2px;font-weight:700;font-size:.9rem;color:#1e1548;word-break:break-all;"></p>
+                                        <p id="photo-preview-size" style="margin:0 0 8px;font-size:.78rem;color:#aaa;"></p>
+                                        <button type="button" id="photo-remove-btn"
+                                                style="font-size:.78rem;color:#ed1c24;background:none;border:1px solid #fca5a5;border-radius:6px;padding:3px 10px;cursor:pointer;">
+                                            <i class="fas fa-times me-1"></i>Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="photo-size-warning" style="display:none;font-size:.78rem;color:#ed1c24;margin-top:6px;">
+                                <i class="fas fa-exclamation-triangle me-1"></i>File exceeds 2 MB — please choose a smaller image.
+                            </p>
+                        </div>
+
                         <div class="mb-4" id="nominee-desc-wrap">
                             <label id="nominee-desc-label">Why do they deserve this award?</label>
                             <textarea name="nominee_desc" rows="4" id="nominee_desc" placeholder="Tell us why this person deserves to win…"><?= htmlspecialchars($_POST['nominee_desc'] ?? '') ?></textarea>
@@ -264,7 +433,7 @@ if ($selectedSlug) {
                         </div>
                         <div class="mb-4">
                             <label>Your Phone</label>
-                            <input type="tel" name="nominator_phone" id="nominator_phone" value="<?= htmlspecialchars($_POST['nominator_phone'] ?? '') ?>" placeholder="+254 700 000 000">
+                            <input type="tel" name="nominator_phone" id="nominator_phone" value="<?= htmlspecialchars($_POST['nominator_phone'] ?? '') ?>">
                         </div>
 
                         <button type="button" id="nom-submit-btn" class="theme-btn btn-style-one" onclick="NomForm.submit()">
@@ -288,7 +457,47 @@ if ($selectedSlug) {
 <?php include 'includes/footer.php'; ?>
 </div>
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+<!-- ── Nomination Confirmation Modal ── -->
+<div class="modal fade" id="nom-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="nomConfirmTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:480px;" role="document">
+        <div class="modal-content" style="border-radius:16px;border:none;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.18);">
+            <!-- Header -->
+            <div class="modal-header" style="background:linear-gradient(135deg,#1e1548 0%,#2d1f6b 100%);border:none;padding:20px 24px;align-items:center;">
+                <div style="display:flex;align-items:center;gap:12px;flex:1;">
+                    <div style="width:38px;height:38px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas fa-clipboard-check" style="color:#fff;font-size:.95rem;"></i>
+                    </div>
+                    <div>
+                        <h5 id="nomConfirmTitle" style="margin:0;color:#fff;font-weight:800;font-size:1rem;line-height:1.2;">Review Your Nomination</h5>
+                        <p style="margin:0;color:rgba(255,255,255,0.55);font-size:.76rem;">Please confirm the details before submitting</p>
+                    </div>
+                </div>
+                <button type="button" data-dismiss="modal" aria-label="Close" style="color:rgba(255,255,255,0.6);font-size:1.5rem;line-height:1;background:none;border:none;cursor:pointer;padding:0;margin-left:12px;">&times;</button>
+            </div>
+            <!-- Body -->
+            <div class="modal-body" style="padding:20px 24px 16px;">
+                <div id="nom-confirm-body">
+                    <!-- populated by JS -->
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="modal-footer" style="border-top:2px solid #f5f5f5;padding:14px 24px;display:flex;justify-content:flex-end;gap:10px;">
+                <button type="button" data-dismiss="modal"
+                        style="padding:10px 18px;border-radius:9px;border:2px solid #e0e0e0;background:#fff;font-weight:700;font-size:.85rem;color:#666;cursor:pointer;">
+                    <i class="fas fa-arrow-left" style="margin-right:5px;"></i>Go Back
+                </button>
+                <button type="button" id="nom-confirm-btn" onclick="NomForm._doSubmit()"
+                        style="padding:10px 22px;border-radius:9px;border:none;background:#ed1c24;color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;transition:background .2s;">
+                    <span id="nom-confirm-btn-inner"><i class="fas fa-paper-plane" style="margin-right:6px;"></i>Confirm &amp; Submit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include 'includes/footer-links.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <!-- Toast notification -->
 <div id="nom-toast" style="position:fixed;top:24px;left:24px;z-index:9999;min-width:280px;max-width:360px;display:none;">
@@ -343,6 +552,9 @@ var NomForm = {
             document.getElementById('nominee-section-title').innerHTML = '<i class="fas fa-user me-2" style="color:#ed1c24;"></i>Your Details';
             document.getElementById('nominee-name-label').innerHTML = 'Your Full Name <span style="color:#ed1c24;">*</span>';
             document.getElementById('nominee-desc-label').textContent = 'Why do you deserve this award?';
+            document.getElementById('nominee-photo-label').innerHTML = 'Your Photo <span style="color:#aaa;font-weight:400;font-size:.82rem;">(optional · JPG / PNG / WebP · max 2 MB)</span>';
+            var cl = document.getElementById('nominee-country-label');
+            if (cl) cl.innerHTML = 'Your Country <span style="color:#aaa;font-weight:400;font-size:.82rem;">(optional)</span>';
             document.getElementById('nom-submit-btn').querySelector('.btn-title').innerHTML = '<i class="fas fa-paper-plane me-2"></i>Submit My Nomination';
             // Hide separate nominator section (you ARE the nominee)
             document.getElementById('nominator-section-header').style.display = 'none';
@@ -362,6 +574,9 @@ var NomForm = {
             document.getElementById('nominee-section-title').innerHTML = '<i class="fas fa-user me-2" style="color:#ed1c24;"></i>About the Nominee';
             document.getElementById('nominee-name-label').innerHTML = "Nominee's Full Name <span style='color:#ed1c24;'>*</span>";
             document.getElementById('nominee-desc-label').textContent = 'Why do they deserve this award?';
+            document.getElementById('nominee-photo-label').innerHTML = "Nominee's Photo <span style='color:#aaa;font-weight:400;font-size:.82rem;'>(optional · JPG / PNG / WebP · max 2 MB)</span>";
+            var cl2 = document.getElementById('nominee-country-label');
+            if (cl2) cl2.innerHTML = "Nominee's Country <span style='color:#aaa;font-weight:400;font-size:.82rem;'>(optional)</span>";
             document.getElementById('nom-submit-btn').querySelector('.btn-title').innerHTML = '<i class="fas fa-paper-plane me-2"></i>Submit Nomination';
             document.getElementById('nominator-section-header').style.display = '';
             document.getElementById('nominator_name').closest('.col-sm-6').style.display = '';
@@ -370,13 +585,12 @@ var NomForm = {
     },
 
     submit: function() {
-        var form   = document.getElementById('nom-form');
-        var btn    = document.getElementById('nom-submit-btn');
-        var slug   = document.getElementById('event_slug_select')
-                       ? document.getElementById('event_slug_select').value
-                       : (form.querySelector('[name="event_slug"]') ? form.querySelector('[name="event_slug"]').value : '');
-        var catEl  = document.getElementById('category_select');
-        var catId  = catEl ? parseInt(catEl.value) : 0;
+        var form     = document.getElementById('nom-form');
+        var slug     = document.getElementById('event_slug_select')
+                         ? document.getElementById('event_slug_select').value
+                         : (form.querySelector('[name="event_slug"]') ? form.querySelector('[name="event_slug"]').value : '');
+        var catEl    = document.getElementById('category_select');
+        var catId    = catEl ? (parseInt(catEl.value) || 0) : 0;
         var nomName  = (form.querySelector('[name="nominee_name"]') || {}).value || '';
         var nomEmail = (form.querySelector('[name="nominator_email"]') || {}).value || '';
 
@@ -386,68 +600,221 @@ var NomForm = {
             if (nomEl) nomEl.value = nomName;
         }
 
-        if (!slug)     { showNomToast('warning','Missing field','Please select an event.'); return; }
-        if (!catId)    { showNomToast('warning','Missing field','Please select an award category.'); return; }
+        // ── Validation ──────────────────────────────────────────────
+        if (!slug)  { showNomToast('warning','Missing field','Please select an event.'); return; }
+        if (!catId) {
+            var msg = document.getElementById('cat-required-msg');
+            if (msg) msg.style.display = 'block';
+            showNomToast('warning','Missing field','Please select an award category.'); return;
+        }
+        var catMsg = document.getElementById('cat-required-msg');
+        if (catMsg) catMsg.style.display = 'none';
         if (!nomName)  { showNomToast('warning','Missing field','Please enter ' + (this.mode === 'self' ? 'your name.' : "the nominee's name.")); return; }
         if (!nomEmail) { showNomToast('warning','Missing field','Please enter your email address.'); return; }
 
-        var payload = {
-            event_slug:      slug,
-            category_id:     catId,
-            nominee_name:    nomName,
-            nominee_desc:    (form.querySelector('[name="nominee_desc"]') || {}).value || '',
-            nominator_name:  this.mode === 'self' ? nomName : ((form.querySelector('[name="nominator_name"]') || {}).value || ''),
-            nominator_email: nomEmail,
-            nominator_phone: (form.querySelector('[name="nominator_phone"]') || {}).value || '',
-            self_nomination: this.mode === 'self',
-        };
+        var photoInput = document.getElementById('nominee_photo');
+        if (photoInput && photoInput.files[0] && photoInput.files[0].size > 2 * 1024 * 1024) {
+            showNomToast('warning','Photo too large','Please choose a photo under 2 MB.');
+            return;
+        }
 
-        // Gather application_form answers
-        var answers = {};
+        // ── Build FormData (stored for _doSubmit) ───────────────────
+        var fd = new FormData();
+        fd.append('event_slug',      slug);
+        fd.append('category_id',     catId);
+        fd.append('nominee_name',    nomName);
+        fd.append('nominee_desc',    (form.querySelector('[name="nominee_desc"]') || {}).value || '');
+        fd.append('nominator_name',  this.mode === 'self' ? nomName : ((form.querySelector('[name="nominator_name"]') || {}).value || ''));
+        fd.append('nominator_email', nomEmail);
+        fd.append('nominator_phone', NomForm._itiPhone ? NomForm._itiPhone.getNumber() : ((form.querySelector('[name="nominator_phone"]') || {}).value || ''));
+        fd.append('self_nomination', this.mode === 'self' ? '1' : '0');
+        fd.append('nominee_country', (form.querySelector('[name="nominee_country"]') || {}).value || '');
         form.querySelectorAll('[name^="app_"]').forEach(function(el) {
-            answers[el.name.slice(4)] = el.value;
+            fd.append('application_answers[' + el.name.slice(4) + ']', el.value);
         });
-        if (Object.keys(answers).length) payload.application_answers = answers;
+        if (photoInput && photoInput.files[0]) {
+            fd.append('nominee_photo', photoInput.files[0]);
+        }
+        this._pendingFd = fd;
 
+        // ── Build confirmation summary ───────────────────────────────
+        var eventEl   = document.getElementById('event_slug_select');
+        var eventName = eventEl
+            ? (eventEl.getAttribute('data-event-name') || (eventEl.tagName === 'SELECT' && eventEl.selectedIndex >= 0 ? eventEl.options[eventEl.selectedIndex].text : slug))
+            : slug;
+        var catName = (catEl && catEl.selectedIndex >= 0)
+            ? catEl.options[catEl.selectedIndex].text.replace(/ — (Nomination|Full Application)$/, '').trim()
+            : '';
+        var countryEl   = document.getElementById('nominee_country');
+        var countryText = (countryEl && countryEl.selectedIndex > 0) ? countryEl.options[countryEl.selectedIndex].text.trim() : '';
+        var phoneNum    = NomForm._itiPhone ? NomForm._itiPhone.getNumber() : ((form.querySelector('[name="nominator_phone"]') || {}).value || '');
+        var nomDesc     = (form.querySelector('[name="nominee_desc"]') || {}).value || '';
+
+        var rows = [
+            { label: 'Event',      value: eventName },
+            { label: 'Category',   value: catName },
+            { label: 'Nominee',    value: nomName },
+            { label: 'Nominating', value: this.mode === 'self' ? 'Myself' : 'Someone else' },
+        ];
+        if (countryText) rows.push({ label: 'Country',    value: countryText });
+        rows.push(        { label: 'Your Email', value: nomEmail });
+        if (phoneNum)    rows.push({ label: 'Your Phone', value: phoneNum });
+        if (nomDesc) {
+            var descLabelEl = document.getElementById('nominee-desc-label');
+            var descLabel = descLabelEl ? descLabelEl.textContent.trim() : 'Statement';
+            rows.push({ label: descLabel, value: nomDesc.length > 120 ? nomDesc.slice(0, 120) + '…' : nomDesc });
+        }
+
+        // Add application form answers to summary
+        var catSel = document.getElementById('category_select');
+        var catOpt = catSel ? catSel.querySelector('option[value="' + catId + '"]') : null;
+        var catType = catOpt ? (catOpt.getAttribute('data-type') || '') : '';
+        var catQuestions = [];
+        if (catOpt) { try { catQuestions = JSON.parse(catOpt.getAttribute('data-questions') || '[]'); } catch(e) {} }
+        if (catType === 'application_form' && catQuestions.length) {
+            catQuestions.forEach(function(q, qIdx) {
+                var el = form.querySelector('[name="app_q' + qIdx + '"]');
+                var val = el ? (el.value || '').trim() : '';
+                if (val) {
+                    var shortVal = val.length > 140 ? val.slice(0, 140) + '…' : val;
+                    rows.push({ label: q.label || ('Q' + (qIdx + 1)), value: shortVal });
+                }
+            });
+        }
+
+        var photoSrc = document.getElementById('photo-preview-img') ? document.getElementById('photo-preview-img').src : '';
+        var hasPhoto = !!(photoInput && photoInput.files[0] && photoSrc);
+
+        var bodyEl = document.getElementById('nom-confirm-body');
+        bodyEl.innerHTML = '';
+
+        // Photo + name header strip (if photo attached)
+        if (hasPhoto) {
+            bodyEl.innerHTML +=
+                '<div style="display:flex;align-items:center;gap:14px;padding:0 0 14px;border-bottom:2px solid #f0eeff;margin-bottom:6px;">' +
+                '<img src="' + photoSrc + '" style="width:54px;height:54px;border-radius:50%;object-fit:cover;border:3px solid #ede9f6;flex-shrink:0;">' +
+                '<div><p style="margin:0;font-weight:800;font-size:.95rem;color:#1e1548;">' + nomName + '</p>' +
+                '<p style="margin:0;font-size:.78rem;color:#888;margin-top:2px;"><i class="fas fa-image" style="margin-right:4px;color:#ed1c24;"></i>Photo attached</p></div>' +
+                '</div>';
+        }
+
+        // Data rows
+        bodyEl.innerHTML += rows.map(function(r, i) {
+            var last = i === rows.length - 1;
+            return '<div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;' + (last ? '' : 'border-bottom:1px solid #f5f5f5;') + '">' +
+                   '<span style="font-size:.72rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.6px;min-width:95px;flex-shrink:0;padding-top:3px;">' + r.label + '</span>' +
+                   '<span style="font-size:.9rem;font-weight:600;color:#1e1548;flex:1;word-break:break-word;">' + r.value + '</span>' +
+                   '</div>';
+        }).join('');
+
+        // Show modal
+        if (typeof $ !== 'undefined') {
+            $('#nom-confirm-modal').modal('show');
+        }
+    },
+
+    _pendingFd: null,
+
+    _doSubmit: function() {
+        var fd = this._pendingFd;
+        if (!fd) return;
+        this._pendingFd = null;
+
+        // Close modal
+        if (typeof $ !== 'undefined') {
+            $('#nom-confirm-modal').modal('hide');
+        }
+
+        var btn = document.getElementById('nom-submit-btn');
+        var originalBtnHtml = btn.querySelector('.btn-title').innerHTML;
         btn.disabled = true;
         btn.querySelector('.btn-title').innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting…';
 
         fetch('<?= API_BASE ?>/api/public/nominations', {
             method: 'POST',
-            headers: {'Content-Type':'application/json','Accept':'application/json'},
-            body: JSON.stringify(payload)
+            headers: {'Accept':'application/json'},
+            body: fd
         })
         .then(function(r){ return r.json(); })
         .then(function(data) {
             btn.disabled = false;
-            btn.querySelector('.btn-title').innerHTML = '<i class="fas fa-paper-plane me-2"></i>Submit Nomination';
+            btn.querySelector('.btn-title').innerHTML = originalBtnHtml;
             if (data.success) {
                 showNomToast('success','Nomination submitted!','Thank you — your nomination has been received.');
+                var form = document.getElementById('nom-form');
                 form.reset();
+                if (typeof $ !== 'undefined' && $.fn.select2) {
+                    $('#category_select').val(null).trigger('change');
+                    $('#nominee_country').val(null).trigger('change');
+                }
                 document.getElementById('app-questions-container').innerHTML = '';
                 var descWrap = document.getElementById('nominee-desc-wrap');
                 if (descWrap) descWrap.style.display = '';
+                NomForm._resetDropzone();
             } else {
                 showNomToast('error','Submission failed', data.error || 'Could not submit. Please try again.');
             }
         })
         .catch(function() {
             btn.disabled = false;
-            btn.querySelector('.btn-title').innerHTML = '<i class="fas fa-paper-plane me-2"></i>Submit Nomination';
+            btn.querySelector('.btn-title').innerHTML = originalBtnHtml;
             showNomToast('error','Network error','Could not connect. Please check your connection and try again.');
         });
     },
 
-    onCategoryChange: function(catId) {
-        var sel = document.getElementById('category_select');
-        var opt = sel ? sel.querySelector('option[value="' + catId + '"]') : null;
-        var container = document.getElementById('app-questions-container');
-        var descWrap   = document.getElementById('nominee-desc-wrap');
-        if (!opt || !container) return;
+    _itiPhone: null,
 
-        var type      = opt.getAttribute('data-type') || '';
+    selectCategory: function(el) {
+        // Deselect all
+        document.querySelectorAll('.cat-card').forEach(function(c) {
+            c.style.border = '2px solid #eee';
+            c.style.background = '#fafafa';
+        });
+        // Select clicked card
+        el.style.border = '2px solid #1e1548';
+        el.style.background = '#f0eeff';
+        var catId = el.getAttribute('data-cat-id');
+        document.getElementById('category_id_hidden').value = catId;
+        var msg = document.getElementById('cat-required-msg');
+        if (msg) msg.style.display = 'none';
+        // Get type/questions from card attrs
+        var type = el.getAttribute('data-type') || '';
         var questions = [];
-        try { questions = JSON.parse(opt.getAttribute('data-questions') || '[]'); } catch(e) {}
+        try { questions = JSON.parse(el.getAttribute('data-questions') || '[]'); } catch(e) {}
+        NomForm.onCategoryChange(catId, type, questions);
+    },
+
+    _resetDropzone: function() {
+        document.getElementById('photo-empty-state').style.display = 'block';
+        document.getElementById('photo-preview-state').style.display = 'none';
+        document.getElementById('photo-size-warning').style.display = 'none';
+        document.getElementById('photo-dropzone').style.borderColor = '#ddd';
+        document.getElementById('photo-dropzone').style.background = '#fafafa';
+        document.getElementById('photo-preview-img').src = '';
+    },
+
+    onCategoryChange: function(catId, typeOverride, questionsOverride) {
+        var container = document.getElementById('app-questions-container');
+        var descWrap  = document.getElementById('nominee-desc-wrap');
+        if (!container) return;
+
+        var type, questions;
+        if (typeOverride !== undefined) {
+            type      = typeOverride;
+            questions = questionsOverride || [];
+        } else {
+            var card = document.querySelector('.cat-card[data-cat-id="' + catId + '"]');
+            if (card) {
+                type = card.getAttribute('data-type') || '';
+                try { questions = JSON.parse(card.getAttribute('data-questions') || '[]'); } catch(e) { questions = []; }
+            } else {
+                var sel = document.getElementById('category_select');
+                var opt = sel ? sel.querySelector('option[value="' + catId + '"]') : null;
+                if (!opt) return;
+                type = opt.getAttribute('data-type') || '';
+                try { questions = JSON.parse(opt.getAttribute('data-questions') || '[]'); } catch(e) { questions = []; }
+            }
+        }
 
         // Clear previous dynamic questions
         container.innerHTML = '';
@@ -456,7 +823,7 @@ var NomForm = {
             // Hide generic description field (application has its own fields)
             if (descWrap) descWrap.style.display = 'none';
 
-            questions.forEach(function(q) {
+            questions.forEach(function(q, qIdx) {
                 var wrap = document.createElement('div');
                 wrap.className = 'app-question-wrap';
 
@@ -482,7 +849,7 @@ var NomForm = {
                     input = document.createElement('input');
                     input.type = q.type === 'number' ? 'number' : 'text';
                 }
-                input.name = 'app_' + q.key;
+                input.name = 'app_q' + qIdx;
                 if (q.required) input.required = true;
                 wrap.appendChild(input);
                 container.appendChild(wrap);
@@ -493,16 +860,130 @@ var NomForm = {
     }
 };
 
-// On page load: set mode, then auto-select category if pre-set via URL
+// ── Photo Dropzone ─────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+    var dropzone  = document.getElementById('photo-dropzone');
+    var fileInput = document.getElementById('nominee_photo');
+    if (!dropzone || !fileInput) return;
+
+    function handleFile(file) {
+        if (!file) return;
+
+        // Type check
+        var allowed = ['image/jpeg','image/png','image/webp'];
+        if (!allowed.includes(file.type)) {
+            showNomToast('warning','Invalid file type','Please upload a JPG, PNG or WebP image.');
+            return;
+        }
+
+        // Size warning (block >2 MB at submit time, warn here)
+        var sizeWarn = document.getElementById('photo-size-warning');
+        sizeWarn.style.display = file.size > 2 * 1024 * 1024 ? 'block' : 'none';
+
+        // Preview
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('photo-preview-img').src = e.target.result;
+            document.getElementById('photo-preview-name').textContent = file.name;
+            document.getElementById('photo-preview-size').textContent = (file.size / 1024).toFixed(0) + ' KB';
+            document.getElementById('photo-empty-state').style.display = 'none';
+            document.getElementById('photo-preview-state').style.display = 'flex';
+            dropzone.style.borderColor = '#1e1548';
+            dropzone.style.background  = '#f7f5ff';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Click to browse
+    fileInput.addEventListener('change', function() {
+        if (this.files[0]) handleFile(this.files[0]);
+    });
+
+    // Remove button
+    document.getElementById('photo-remove-btn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        fileInput.value = '';
+        NomForm._resetDropzone();
+    });
+
+    // Drag & drop
+    dropzone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.style.borderColor = '#ed1c24';
+        this.style.background  = '#fff5f5';
+    });
+    dropzone.addEventListener('dragleave', function() {
+        this.style.borderColor = '#ddd';
+        this.style.background  = '#fafafa';
+    });
+    dropzone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.style.borderColor = '#ddd';
+        this.style.background  = '#fafafa';
+        var file = e.dataTransfer.files[0];
+        if (file) {
+            // Inject into the file input so FormData picks it up
+            var dt = new DataTransfer();
+            dt.items.add(file);
+            fileInput.files = dt.files;
+            handleFile(file);
+        }
+    });
+});
+
+// intl-tel-input + Select2 country picker
+document.addEventListener('DOMContentLoaded', function() {
+    var phoneEl = document.getElementById('nominator_phone');
+    if (phoneEl && window.intlTelInput) {
+        NomForm._itiPhone = window.intlTelInput(phoneEl, {
+            initialCountry: 'ke',
+            preferredCountries: ['ke','ug','tz','rw','et','gh','ng','za','gb','us','ae'],
+            separateDialCode: true,
+            utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js',
+        });
+    }
+
+    if (typeof $ !== 'undefined' && $.fn.select2) {
+        // Category picker
+        $('#category_select').select2({
+            placeholder: '— Select a category —',
+            width: '100%',
+        });
+        $('#category_select').on('change', function() {
+            var catId = $(this).val();
+            var opt   = this.options[this.selectedIndex];
+            var type  = opt ? (opt.getAttribute('data-type') || '') : '';
+            var questions = [];
+            try { questions = JSON.parse((opt ? opt.getAttribute('data-questions') : null) || '[]'); } catch(e) {}
+            NomForm.onCategoryChange(catId, type, questions);
+            var msg = document.getElementById('cat-required-msg');
+            if (msg) msg.style.display = 'none';
+        });
+
+        // Country picker
+        $('#nominee_country').select2({
+            placeholder: '🌍  Select Country',
+            allowClear: true,
+            width: '100%',
+            dropdownAutoWidth: false,
+        });
+
+        // Sync phone flag when country changes (Select2 triggers native change)
+        $('#nominee_country').on('change', function() {
+            var code = $(this).val();
+            if (code && NomForm._itiPhone) {
+                NomForm._itiPhone.setCountry(code.toLowerCase());
+            }
+        });
+    }
+});
+
+// On page load: set mode, then trigger category questions if pre-selected
 document.addEventListener('DOMContentLoaded', function() {
     NomForm.setMode(<?= json_encode($_GET['mode'] ?? 'other') ?> === 'self' ? 'self' : 'other');
     var preselect = <?= $selectedCatId ?>;
     if (preselect) {
-        var sel = document.getElementById('category_select');
-        if (sel) {
-            sel.value = preselect;
-            NomForm.onCategoryChange(preselect);
-        }
+        NomForm.onCategoryChange(preselect);
     }
 });
 </script>

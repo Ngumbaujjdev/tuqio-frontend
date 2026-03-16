@@ -165,7 +165,7 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.facebook.com/share/p/1DJyLwtvqf/","https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
@@ -188,6 +188,104 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
 <meta name="apple-mobile-web-app-title" content="Tuqio Hub">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+<style>
+/* ── Nominees tab controls ─────────────────────────────── */
+.nom-controls {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    align-items: center; margin-bottom: 28px;
+    padding: 16px 18px; background: #f9fafb;
+    border-radius: 10px; border: 1px solid #eee;
+}
+.nom-search-wrap { flex-grow: 1; min-width: 180px; position: relative; }
+.nom-search-wrap input {
+    width: 100%; padding: 10px 38px 10px 14px;
+    border: 2px solid #e5e7eb; border-radius: 8px;
+    font-size: .88rem; color: #333; outline: none;
+    transition: border-color .2s;
+}
+.nom-search-wrap input:focus { border-color: #ed1c24; }
+.nom-search-wrap .nom-search-icon {
+    position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%); color: #aaa; pointer-events: none;
+}
+.select2-container--default .select2-selection--single {
+    height: 42px; border: 2px solid #e5e7eb;
+    border-radius: 8px; display: flex; align-items: center;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 42px; color: #333; font-size: .88rem; padding-left: 12px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 42px;
+}
+.select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: #ed1c24;
+}
+/* ── Nominee card ──────────────────────────────────────── */
+.nom-card {
+    background: #fff; border: 1px solid #f0f0f0;
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    transition: box-shadow .25s, transform .25s;
+    height: 100%; display: flex; flex-direction: column;
+    align-items: center; cursor: pointer;
+}
+.nom-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.1); transform: translateY(-2px); }
+.nom-avatar {
+    width: 60px; height: 60px; border-radius: 50%;
+    object-fit: cover; display: block; margin: 0 auto 12px;
+    border: 2px solid #f0f0f0;
+}
+.nom-initials {
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1rem; color: #fff;
+    margin: 0 auto 12px; flex-shrink: 0;
+}
+.nom-name {
+    font-size: .88rem; font-weight: 700; color: #1e1548;
+    margin-bottom: 4px; line-height: 1.3;
+}
+.nom-subtitle { font-size: .76rem; color: #ed1c24; margin-bottom: 4px; line-height: 1.3; }
+.nom-votes { font-size: .72rem; color: #aaa; }
+.nom-winner-badge {
+    display: inline-block; font-size: .65rem; background: #f59e0b;
+    color: #fff; padding: 2px 8px; border-radius: 20px;
+    font-weight: 700; margin-bottom: 6px;
+}
+/* ── Category section ─────────────────────────────────── */
+.nom-cat-section { margin-bottom: 36px; }
+.nom-cat-header {
+    display: flex; align-items: baseline; gap: 10px;
+    border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;
+    margin-bottom: 18px;
+}
+.nom-cat-title { font-size: 1.05rem; font-weight: 700; color: #1e1548; margin: 0; }
+.nom-cat-count { font-size: .78rem; color: #aaa; font-weight: 400; }
+/* ── No results state ─────────────────────────────────── */
+.nom-no-results { text-align: center; padding: 40px 0; color: #aaa; display: none; }
+.nom-no-results i { font-size: 2.5rem; opacity: .3; }
+
+/* ── Select2 brand overrides ───────────────────────────── */
+.select2-container--default .select2-results__option--highlighted {
+    background-color: #1e1548 !important;
+    color: #fff !important;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: #ed1c24;
+    outline: none;
+}
+.select2-dropdown {
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.select2-container--default .select2-results__option--selected {
+    background: rgba(30,21,72,.06);
+    color: #1e1548;
+    font-weight: 600;
+}
+</style>
 </head>
 <body>
 <div class="page-wrapper">
@@ -610,91 +708,144 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
                         </div>
                         <?php endif; ?>
 
-                        <?php // ── Category cards ──────────────────────────── ?>
+                        <?php // ── Category list + search controls ──────────── ?>
                         <?php if (!empty($categories)): ?>
-                        <div style="margin-top:20px;">
-                            <?php foreach ($categories as $cat):
-                                $cands = $cat['nominees'] ?? $cat['candidates'] ?? [];
-                            ?>
-                            <div class="nom-category-card">
-                                <div class="cat-name">
-                                    <?= htmlspecialchars($cat['name']) ?>
-                                    <span style="font-size:.78rem;color:#aaa;font-weight:400;margin-left:6px;">(<?= count($cands) ?> <?= count($cands) === 1 ? 'nominee' : 'nominees' ?>)</span>
-                                </div>
-                                <?php if (!empty($cat['description'])): ?>
-                                <div class="cat-desc"><?= htmlspecialchars($cat['description']) ?></div>
-                                <?php endif; ?>
 
-                                <?php if (!empty($cands)): ?>
-                                <div class="row" style="margin:0 -8px;">
-                                    <?php foreach (array_slice($cands, 0, 6) as $c):
-                                        $cName = $c['name'] ?? '';
-                                        $wds   = array_filter(explode(' ', trim($cName)));
-                                        $ini   = implode('', array_map(fn($w) => strtoupper($w[0] ?? ''), array_slice($wds, 0, 2)));
-                                        $col   = $initialsColors[$globalIdx % 4];
-                                        $globalIdx++;
+                        <?php // Build Select2 options ?>
+                        <?php $catOptions = []; foreach ($categories as $cat) { $catOptions[] = ['id' => 'cat-sec-' . ($cat['id'] ?? ''), 'text' => $cat['name'] ?? '']; } ?>
+
+                        <!-- Controls: jump + search -->
+                        <div class="nom-controls">
+                            <?php if (count($categories) > 1): ?>
+                            <div style="min-width:200px;flex-shrink:0;">
+                                <select id="nom-cat-jump" style="width:100%;">
+                                    <option value="all">All Categories</option>
+                                    <?php foreach ($categories as $cat):
+                                        $cCount = count($cat['nominees'] ?? $cat['candidates'] ?? []);
                                     ?>
-                                    <div class="col-md-4 col-6" style="padding:0 8px;margin-bottom:12px;">
-                                        <div style="display:flex;align-items:center;gap:10px;background:#f9fafb;border-radius:8px;padding:10px 12px;">
-                                            <?php if (!empty($c['image'])): ?>
-                                            <img src="<?= htmlspecialchars($c['image']) ?>" alt="<?= htmlspecialchars($cName) ?>"
-                                                 style="width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;"
-                                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                                            <div style="display:none;width:38px;height:38px;border-radius:50%;background:<?= $col ?>;color:#fff;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;"><?= $ini ?></div>
-                                            <?php else: ?>
-                                            <div style="width:38px;height:38px;border-radius:50%;background:<?= $col ?>;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;"><?= $ini ?></div>
-                                            <?php endif; ?>
-                                            <div style="min-width:0;">
-                                                <div style="font-size:.82rem;font-weight:700;color:#1e1548;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?= htmlspecialchars($cName) ?></div>
-                                                <?php if (!empty($c['subtitle'])): ?>
-                                                <div style="font-size:.72rem;color:#ed1c24;"><?= htmlspecialchars($c['subtitle']) ?></div>
-                                                <?php endif; ?>
-                                                <?php if ($isVotingOpen && !empty($c['votes_count'])): ?>
-                                                <div style="font-size:.7rem;color:#aaa;"><?= number_format($c['votes_count']) ?> votes</div>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <option value="cat-sec-<?= $cat['id'] ?? '' ?>">
+                                        <?= htmlspecialchars($cat['name']) ?> (<?= $cCount ?>)
+                                    </option>
                                     <?php endforeach; ?>
-                                </div>
-                                <?php if (count($cands) > 6): ?>
-                                <div style="margin-top:10px;">
-                                    <a href="<?= SITE_URL ?>/nominees?event=<?= urlencode($slug) ?>" style="font-size:.83rem;color:#ed1c24;font-weight:600;">
-                                        View all <?= count($cands) ?> nominees in this category →
-                                    </a>
-                                </div>
-                                <?php endif; ?>
-                                <?php elseif ($phase === 'nomination' || ($hasNominations && ($cat['nomination_status'] ?? '') === 'collecting' && ($cat['nomination_type'] ?? '') !== 'admin_only')): ?>
-                                <div style="font-size:.82rem;color:#aaa;padding:10px 0 14px;">No nominees yet — be the first!</div>
-                                <?php endif; ?>
-
-                                <?php
-                                // Show nominate CTA on any collecting non-admin category
-                                $catNomType   = $cat['nomination_type']   ?? '';
-                                $catNomStatus = $cat['nomination_status'] ?? '';
-                                $catId        = (int)($cat['id'] ?? 0);
-                                $showNominateCta = $hasNominations
-                                    && $catNomStatus === 'collecting'
-                                    && $catNomType !== 'admin_only'
-                                    && !in_array($phase, ['review', 'results', 'ended']);
-                                ?>
-                                <?php if ($showNominateCta): ?>
-                                <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-                                    <a href="<?= SITE_URL ?>/nominate.php?event=<?= urlencode($slug) ?>&category=<?= $catId ?>"
-                                       style="display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:8px;background:#1e1548;color:#fff;font-size:.82rem;font-weight:700;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-                                        <i class="fas fa-user-plus"></i> Nominate Someone
-                                    </a>
-                                    <a href="<?= SITE_URL ?>/nominate.php?event=<?= urlencode($slug) ?>&category=<?= $catId ?>&mode=self"
-                                       style="display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:8px;border:2px solid #1e1548;background:transparent;color:#1e1548;font-size:.82rem;font-weight:700;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
-                                        <i class="fas fa-user"></i> Nominate Myself
-                                    </a>
-                                </div>
-                                <?php endif; ?>
+                                </select>
                             </div>
-                            <?php endforeach; ?>
+                            <?php endif; ?>
+                            <div class="nom-search-wrap">
+                                <input type="text" id="nom-search" placeholder="Search nominees by name…" autocomplete="off">
+                                <i class="fas fa-search nom-search-icon"></i>
+                            </div>
                         </div>
+
+                        <!-- No results state -->
+                        <div class="nom-no-results" id="nom-no-results">
+                            <i class="fas fa-users-slash"></i>
+                            <h5 style="margin-top:14px;color:#999;">No nominees match your search</h5>
+                            <p style="font-size:.88rem;">Try a different keyword.</p>
+                        </div>
+
+                        <!-- Category sections -->
+                        <div id="nom-categories-wrap">
+                        <?php foreach ($categories as $cat):
+                            $cands    = $cat['nominees'] ?? $cat['candidates'] ?? [];
+                            $catId    = (int)($cat['id'] ?? 0);
+                            $catNomType   = $cat['nomination_type']   ?? '';
+                            $catNomStatus = $cat['nomination_status'] ?? '';
+                            $showNominateCta = $hasNominations
+                                && $catNomStatus === 'collecting'
+                                && $catNomType !== 'admin_only'
+                                && !in_array($phase, ['review', 'results', 'ended']);
+                        ?>
+                        <div class="nom-cat-section" id="cat-sec-<?= $catId ?>">
+
+                            <!-- Category header -->
+                            <div class="nom-cat-header">
+                                <h6 class="nom-cat-title"><?= htmlspecialchars($cat['name']) ?></h6>
+                                <span class="nom-cat-count"><?= count($cands) ?> <?= count($cands) === 1 ? 'nominee' : 'nominees' ?></span>
+                            </div>
+                            <?php if (!empty($cat['description'])): ?>
+                            <p style="font-size:.85rem;color:#666;margin-bottom:16px;"><?= htmlspecialchars($cat['description']) ?></p>
+                            <?php endif; ?>
+
+                            <?php if (!empty($cands)): ?>
+                            <!-- Nominee grid — ALL nominees, no cap -->
+                            <div class="row" id="cat-grid-<?= $catId ?>">
+                                <?php foreach ($cands as $c):
+                                    $cName = $c['name'] ?? '';
+                                    $wds   = array_filter(explode(' ', trim($cName)));
+                                    $ini   = implode('', array_map(fn($w) => strtoupper($w[0] ?? ''), array_slice($wds, 0, 2)));
+                                    $col   = $initialsColors[$globalIdx % 4];
+                                    $globalIdx++;
+                                    $imgSrc = $c['image'] ?? $c['thumbnail'] ?? '';
+                                ?>
+                                <div class="col-lg-3 col-md-4 col-6 mb-3 nom-card-col"
+                                     data-nom-id="<?= $c['id'] ?? '' ?>"
+                                     data-nom-name="<?= htmlspecialchars($cName) ?>"
+                                     data-nom-subtitle="<?= htmlspecialchars($c['subtitle'] ?? '') ?>"
+                                     data-nom-description="<?= htmlspecialchars($c['description'] ?? '') ?>"
+                                     data-nom-image="<?= htmlspecialchars($imgSrc) ?>"
+                                     data-nom-initials="<?= htmlspecialchars($ini) ?>"
+                                     data-nom-color="<?= htmlspecialchars($col) ?>"
+                                     data-nom-votes="<?= $c['votes_count'] ?? 0 ?>"
+                                     data-nom-winner="<?= !empty($c['is_winner']) ? '1' : '0' ?>"
+                                     data-nom-winner-pos="<?= $c['winner_position'] ?? '' ?>"
+                                     data-nom-cat="<?= htmlspecialchars($cat['name'] ?? '') ?>"
+                                     data-nom-code="<?= htmlspecialchars($c['code'] ?? '') ?>"
+                                     data-nom-email="<?= htmlspecialchars($c['contact_email'] ?? '') ?>"
+                                     data-nom-phone="<?= htmlspecialchars($c['contact_phone'] ?? '') ?>"
+                                     data-nom-video="<?= htmlspecialchars($c['video_url'] ?? '') ?>"
+                                     data-nom-socials="<?= htmlspecialchars(json_encode($c['social_links'] ?? [])) ?>"
+                                     data-name="<?= strtolower(htmlspecialchars($cName)) ?>"
+                                     data-subtitle="<?= strtolower(htmlspecialchars($c['subtitle'] ?? '')) ?>">
+                                    <div class="nom-card">
+                                        <?php if (!empty($c['is_winner'])): ?>
+                                        <div class="nom-winner-badge"><i class="fas fa-trophy me-1"></i> Winner</div>
+                                        <?php endif; ?>
+
+                                        <?php if ($imgSrc): ?>
+                                        <img src="<?= htmlspecialchars($imgSrc) ?>" alt="<?= htmlspecialchars($cName) ?>"
+                                             class="nom-avatar"
+                                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                        <div class="nom-initials" style="background:<?= $col ?>;display:none;"><?= $ini ?></div>
+                                        <?php else: ?>
+                                        <div class="nom-initials" style="background:<?= $col ?>;"><?= $ini ?></div>
+                                        <?php endif; ?>
+
+                                        <div class="nom-name"><?= htmlspecialchars($cName) ?></div>
+                                        <?php if (!empty($c['subtitle'])): ?>
+                                        <div class="nom-subtitle"><?= htmlspecialchars($c['subtitle']) ?></div>
+                                        <?php endif; ?>
+                                        <?php if (!empty($c['votes_count'])): ?>
+                                        <div class="nom-votes"><i class="fas fa-vote-yea me-1"></i><?= number_format($c['votes_count']) ?> votes</div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <?php elseif ($phase === 'nomination' || ($hasNominations && $catNomStatus === 'collecting' && $catNomType !== 'admin_only')): ?>
+                            <div style="font-size:.85rem;color:#aaa;padding:8px 0 14px;">No nominees yet — be the first to nominate!</div>
+                            <?php endif; ?>
+
+                            <!-- Nominate CTAs per category -->
+                            <?php if ($showNominateCta): ?>
+                            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+                                <a href="<?= SITE_URL ?>/nominate.php?event=<?= urlencode($slug) ?>&category=<?= $catId ?>"
+                                   style="display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:8px;background:#1e1548;color:#fff;font-size:.82rem;font-weight:700;text-decoration:none;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+                                    <i class="fas fa-user-plus"></i> Nominate Someone
+                                </a>
+                                <a href="<?= SITE_URL ?>/nominate.php?event=<?= urlencode($slug) ?>&category=<?= $catId ?>&mode=self"
+                                   style="display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:8px;border:2px solid #1e1548;background:transparent;color:#1e1548;font-size:.82rem;font-weight:700;text-decoration:none;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
+                                    <i class="fas fa-user"></i> Nominate Myself
+                                </a>
+                            </div>
+                            <?php endif; ?>
+
+                        </div><!-- end nom-cat-section -->
+                        <?php endforeach; ?>
+                        </div><!-- end nom-categories-wrap -->
+
                         <?php elseif (!$hasNominations && !empty($event['has_voting']) && !$votingClosed && !$isVotingOpen): ?>
-                        <div style="text-align:center;padding:40px 0;color:#aaa;">
+                        <div style="text-align:center;padding:60px 0;color:#aaa;">
                             <i class="fas fa-users" style="font-size:2.5rem;opacity:.3;"></i>
                             <h5 style="margin-top:16px;color:#999;">Nominees will be announced soon</h5>
                             <p style="font-size:.88rem;">Check back when voting opens.</p>
@@ -705,6 +856,7 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
                     <?php endif; ?>
 
                     <!-- ── Tickets tab ────────────────────────────────────── -->
+
                     <?php if ($hasTicketing): ?>
                     <div class="tab-pane fade" id="tab-tickets">
                         <?php if ($phase !== 'on_sale' && empty($ticketTypes)): ?>
@@ -718,48 +870,67 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
                             <?php endif; ?>
                         </div>
                         <?php elseif (!empty($ticketTypes)): ?>
-                        <p style="font-size:.9rem;color:#666;margin-bottom:24px;">Choose your ticket type for <?= htmlspecialchars($event['name']) ?>.</p>
-                        <div class="row">
-                            <?php foreach ($ticketTypes as $tt): ?>
-                            <div class="col-md-6 mb-4">
-                                <div class="ticket-type <?= empty($tt['is_available']) ? 'opacity-50' : '' ?>">
-                                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
-                                        <div class="ticket-name"><?= htmlspecialchars($tt['name']) ?></div>
-                                        <?php if (!empty($tt['is_sold_out'])): ?>
-                                        <span style="font-size:.68rem;background:#dc3545;color:#fff;padding:2px 8px;border-radius:20px;font-weight:700;">SOLD OUT</span>
-                                        <?php elseif (empty($tt['is_available'])): ?>
-                                        <span style="font-size:.68rem;background:#6c757d;color:#fff;padding:2px 8px;border-radius:20px;font-weight:700;">UNAVAILABLE</span>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="ticket-price">
-                                        <?php if (!empty($tt['original_price']) && $tt['original_price'] > $tt['price']): ?>
-                                        <span style="font-size:.9rem;text-decoration:line-through;color:#aaa;font-weight:400;margin-right:8px;"><?= $tt['currency'] ?> <?= number_format($tt['original_price'], 0) ?></span>
-                                        <?php endif; ?>
-                                        <?= $tt['currency'] ?> <?= number_format($tt['price'], 0) ?>
-                                    </div>
-                                    <?php if (!empty($tt['description'])): ?>
-                                    <div class="ticket-desc"><?= htmlspecialchars($tt['description']) ?></div>
+                        <p style="font-size:.88rem;color:#888;margin-bottom:20px;">Choose your ticket type for <?= htmlspecialchars($event['name']) ?>.</p>
+                        <?php foreach ($ticketTypes as $tt):
+                            $now         = time();
+                            $saleStartTs = !empty($tt['sale_starts_at']) ? strtotime($tt['sale_starts_at']) : null;
+                            $saleEndTs   = !empty($tt['sale_ends_at'])   ? strtotime($tt['sale_ends_at'])   : null;
+                            $isSoldOut    = !empty($tt['is_sold_out']) || ($tt['remaining'] !== null && $tt['remaining'] <= 0);
+                            $isComingSoon = !$isSoldOut && $saleStartTs && $saleStartTs > $now;
+                            $isSaleEnded  = !$isSoldOut && $saleEndTs && $saleEndTs < $now;
+                            $isAvailable  = !empty($tt['is_available']) && !$isSoldOut;
+                            $remaining    = $tt['remaining'] ?? null;
+                            $lowStock     = $remaining !== null && $remaining > 0 && $remaining <= 10;
+                            $minOrder     = (int)($tt['min_per_order'] ?? 1);
+                            $savingsPct   = (!empty($tt['original_price']) && $tt['original_price'] > $tt['price'])
+                                            ? round((($tt['original_price'] - $tt['price']) / $tt['original_price']) * 100) : 0;
+                            $unavailable  = $isSoldOut || $isComingSoon || $isSaleEnded;
+                        ?>
+                        <div class="ticket-type <?= $unavailable ? 'unavailable' : '' ?>">
+                            <!-- Name + badges row -->
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+                                <div class="ticket-name"><?= htmlspecialchars($tt['name']) ?></div>
+                                <div>
+                                    <?php if ($isSoldOut): ?>
+                                    <span class="tt-badge sold-out-badge"><i class="fas fa-times-circle"></i> Sold Out</span>
+                                    <?php elseif ($isComingSoon): ?>
+                                    <span class="tt-badge coming-soon-badge"><i class="fas fa-clock"></i> From <?= date('M j', $saleStartTs) ?></span>
+                                    <?php elseif ($isSaleEnded): ?>
+                                    <span class="tt-badge sale-ended-badge"><i class="fas fa-ban"></i> Sale ended</span>
+                                    <?php elseif ($lowStock): ?>
+                                    <span class="tt-badge low-stock-badge"><i class="fas fa-fire"></i> Only <?= $remaining ?> left</span>
                                     <?php endif; ?>
-                                    <?php if (!empty($tt['benefits'])): ?>
-                                    <ul style="list-style:none;padding:0;margin:10px 0 0;font-size:.8rem;color:#555;">
-                                        <?php foreach ($tt['benefits'] as $b): ?>
-                                        <li><i class="fas fa-check" style="color:#10b981;margin-right:6px;font-size:.7rem;"></i><?= htmlspecialchars($b) ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                    <?php endif; ?>
-                                    <?php if (!empty($tt['remaining']) && $tt['remaining'] <= 20): ?>
-                                    <div style="font-size:.75rem;color:#f59e0b;font-weight:700;margin-top:8px;"><i class="fas fa-exclamation-triangle me-1"></i> Only <?= $tt['remaining'] ?> left!</div>
-                                    <?php endif; ?>
-                                    <?php if (!empty($tt['is_available'])): ?>
-                                    <a href="<?= SITE_URL ?>/checkout?slug=<?= urlencode($slug) ?>"
-                                       class="theme-btn btn-style-one" style="display:block;text-align:center;margin-top:14px;">
-                                        <span class="btn-title" style="color:#ffffff;"><i class="fas fa-ticket-alt me-1"></i> Buy Ticket</span>
-                                    </a>
+                                    <?php if ($minOrder > 1): ?>
+                                    <span class="tt-badge group-badge"><i class="fas fa-users"></i> Min <?= $minOrder ?></span>
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <?php endforeach; ?>
+                            <!-- Price -->
+                            <div style="margin-bottom:8px;">
+                                <span class="ticket-price"><?= $tt['currency'] ?> <?= number_format($tt['price'], 0) ?></span>
+                                <?php if ($savingsPct > 0): ?>
+                                <span class="ticket-orig"><?= number_format($tt['original_price'], 0) ?></span>
+                                <span class="ticket-save">Save <?= $savingsPct ?>%</span>
+                                <?php endif; ?>
+                            </div>
+                            <?php if (!empty($tt['description'])): ?>
+                            <div class="ticket-desc"><?= htmlspecialchars($tt['description']) ?></div>
+                            <?php endif; ?>
+                            <?php if (!empty($tt['benefits'])): ?>
+                            <ul style="list-style:none;padding:0;margin:10px 0 0;font-size:.79rem;color:#555;">
+                                <?php foreach ($tt['benefits'] as $b): ?>
+                                <li style="margin-bottom:4px;"><i class="fas fa-check" style="color:#10b981;margin-right:6px;font-size:.68rem;"></i><?= htmlspecialchars($b) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                            <?php if ($isAvailable): ?>
+                            <a href="<?= SITE_URL ?>/checkout?slug=<?= urlencode($slug) ?>"
+                               class="theme-btn btn-style-one" style="display:block;text-align:center;margin-top:14px;">
+                                <span class="btn-title" style="color:#ffffff;"><i class="fas fa-ticket-alt me-1"></i> Get Tickets</span>
+                            </a>
+                            <?php endif; ?>
                         </div>
+                        <?php endforeach; ?>
                         <?php else: ?>
                         <p style="text-align:center;color:#aaa;padding:40px 0;">Ticket details coming soon.</p>
                         <?php endif; ?>
@@ -930,12 +1101,12 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
                     <?php if (!empty($event['has_voting'])): ?>
                     <?php if ($isVotingOpen): ?>
                     <div style="background:linear-gradient(135deg,#ed1c24,#c41820);border-radius:12px;padding:26px;text-align:center;color:#fff;margin-bottom:24px;">
-                        <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:2px;opacity:.7;margin-bottom:8px;">Voting is Open</div>
-                        <h5 style="font-weight:800;margin-bottom:8px;">Cast Your Vote</h5>
-                        <p style="font-size:.85rem;opacity:.88;margin-bottom:16px;">Support your favourite nominees in <?= htmlspecialchars($event['name']) ?>.</p>
+                        <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.75);margin-bottom:8px;">Voting is Open</div>
+                        <h5 style="font-weight:800;margin-bottom:8px;color:#fff;">Cast Your Vote</h5>
+                        <p style="font-size:.85rem;color:rgba(255,255,255,.9);margin-bottom:16px;">Support your favourite nominees in <?= htmlspecialchars($event['name']) ?>.</p>
                         <a href="<?= SITE_URL ?>/nominees?event=<?= urlencode($slug) ?>"
                            class="theme-btn btn-style-two" style="display:block;text-align:center;background:#fff;color:#ed1c24;border-color:#fff;">
-                            <span class="btn-title" style="color:#ffffff;"><i class="fas fa-vote-yea me-2"></i> Vote Now</span>
+                            <span class="btn-title" style="color:#ed1c24;"><i class="fas fa-vote-yea me-2"></i> Vote Now</span>
                         </a>
                     </div>
                     <?php elseif ($votingNotYet): ?>
@@ -986,12 +1157,32 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
                     <div class="sidebar-widget">
                         <h5 class="sidebar-title">Explore More</h5>
                         <div class="widget-content">
-                            <ul class="blog-categories">
-                                <li><a href="<?= SITE_URL ?>/events"><i class="fa fa-calendar-alt me-2" style="color:#ed1c24;"></i> All Events</a></li>
-                                <li><a href="<?= SITE_URL ?>/nominees"><i class="fa fa-users me-2" style="color:#ed1c24;"></i> All Nominees</a></li>
-                                <li><a href="<?= SITE_URL ?>/polls"><i class="fa fa-poll me-2" style="color:#ed1c24;"></i> Live Polls</a></li>
+                            <ul style="list-style:none;padding:0;margin:0;">
+                                <li style="border-bottom:1px solid #f0f0f0;">
+                                    <a href="<?= SITE_URL ?>/events" style="display:flex;align-items:center;gap:10px;padding:10px 0;color:#333;text-decoration:none;font-size:.9rem;font-weight:500;" onmouseover="this.style.color='#ed1c24'" onmouseout="this.style.color='#333'">
+                                        <i class="fa fa-calendar-alt" style="color:#ed1c24;width:18px;text-align:center;flex-shrink:0;"></i>
+                                        All Events
+                                    </a>
+                                </li>
+                                <li style="border-bottom:1px solid #f0f0f0;">
+                                    <a href="<?= SITE_URL ?>/nominees" style="display:flex;align-items:center;gap:10px;padding:10px 0;color:#333;text-decoration:none;font-size:.9rem;font-weight:500;" onmouseover="this.style.color='#ed1c24'" onmouseout="this.style.color='#333'">
+                                        <i class="fa fa-users" style="color:#ed1c24;width:18px;text-align:center;flex-shrink:0;"></i>
+                                        All Nominees
+                                    </a>
+                                </li>
+                                <li style="border-bottom:1px solid #f0f0f0;">
+                                    <a href="<?= SITE_URL ?>/polls" style="display:flex;align-items:center;gap:10px;padding:10px 0;color:#333;text-decoration:none;font-size:.9rem;font-weight:500;" onmouseover="this.style.color='#ed1c24'" onmouseout="this.style.color='#333'">
+                                        <i class="fa fa-poll" style="color:#ed1c24;width:18px;text-align:center;flex-shrink:0;"></i>
+                                        Live Polls
+                                    </a>
+                                </li>
                                 <?php if ($hasNominations): ?>
-                                <li><a href="<?= SITE_URL ?>/nominate.php?event=<?= urlencode($slug) ?>"><i class="fa fa-pen-nib me-2" style="color:#ed1c24;"></i> Nominate Someone</a></li>
+                                <li>
+                                    <a href="<?= SITE_URL ?>/nominate.php?event=<?= urlencode($slug) ?>" style="display:flex;align-items:center;gap:10px;padding:10px 0;color:#333;text-decoration:none;font-size:.9rem;font-weight:500;" onmouseover="this.style.color='#ed1c24'" onmouseout="this.style.color='#333'">
+                                        <i class="fa fa-pen-nib" style="color:#ed1c24;width:18px;text-align:center;flex-shrink:0;"></i>
+                                        Nominate Someone
+                                    </a>
+                                </li>
                                 <?php endif; ?>
                             </ul>
                         </div>
@@ -1008,8 +1199,103 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
 <?php include 'includes/footer.php'; ?>
 </div>
 
+<!-- ── Nominee Detail Modal ────────────────────────────── -->
+<div class="modal fade" id="nomineeModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0;">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:560px;">
+        <div class="modal-content" style="border-radius:14px;border:none;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.18);">
+
+            <!-- Header -->
+            <div class="modal-header" style="background:linear-gradient(135deg,#1e1548 0%,#2d1f6b 100%);padding:18px 22px;border:none;">
+                <div>
+                    <span id="modal-nom-cat" style="font-size:.7rem;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.8px;font-weight:700;"></span>
+                    <h5 class="modal-title" id="modal-nom-name" style="margin:3px 0 0;font-weight:800;color:#fff;line-height:1.2;font-size:1.15rem;"></h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding:18px 22px;margin:-18px -22px -18px auto;color:#fff;opacity:.8;text-shadow:none;">
+                    <span aria-hidden="true" style="font-size:1.6rem;font-weight:300;">&times;</span>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body" style="padding:24px 22px;">
+
+                <!-- Avatar + winner badge row -->
+                <div style="display:flex;align-items:flex-start;gap:18px;margin-bottom:18px;">
+                    <div style="flex-shrink:0;">
+                        <img id="modal-nom-img" src="" alt="" style="width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid #ede9f6;display:none;">
+                        <div id="modal-nom-initials" style="width:88px;height:88px;border-radius:50%;color:#fff;font-size:1.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;"></div>
+                    </div>
+                    <div style="flex:1;min-width:0;padding-top:4px;">
+                        <!-- Winner badge -->
+                        <div id="modal-nom-winner" style="display:none;font-size:.72rem;background:#f59e0b;color:#fff;padding:3px 10px;border-radius:20px;font-weight:700;margin-bottom:6px;display:inline-block;">
+                            <i class="fas fa-trophy"></i> <span id="modal-nom-winner-label">Winner</span>
+                        </div>
+                        <!-- Subtitle / role -->
+                        <div id="modal-nom-subtitle" style="font-size:.9rem;color:#ed1c24;font-weight:700;margin-bottom:6px;"></div>
+                        <!-- Voting code -->
+                        <div id="modal-nom-code-wrap" style="display:none;margin-bottom:6px;">
+                            <span style="font-size:.7rem;color:#999;text-transform:uppercase;letter-spacing:.5px;">Code</span><br>
+                            <span id="modal-nom-code" style="font-family:monospace;font-size:.9rem;font-weight:700;color:#1e1548;background:#f0eeff;padding:2px 8px;border-radius:5px;"></span>
+                        </div>
+                        <!-- Votes pill -->
+                        <div id="modal-nom-votes-wrap" style="display:inline-flex;align-items:center;gap:6px;background:rgba(30,21,72,.06);padding:5px 12px;border-radius:20px;">
+                            <i class="fas fa-poll" style="color:#1e1548;font-size:.8rem;"></i>
+                            <span id="modal-nom-votes" style="font-size:.82rem;font-weight:700;color:#1e1548;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div id="modal-nom-desc-wrap" style="display:none;background:#f9fafb;border-radius:8px;padding:14px;margin-bottom:14px;">
+                    <p style="font-size:.75rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin:0 0 6px;">About</p>
+                    <div id="modal-nom-desc" style="font-size:.88rem;color:#444;line-height:1.65;margin:0;"></div>
+                </div>
+
+                <!-- Contact info -->
+                <div id="modal-nom-contact-wrap" style="display:none;margin-bottom:14px;">
+                    <p style="font-size:.75rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin:0 0 8px;">Contact</p>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div id="modal-nom-email-row" style="display:none;align-items:center;gap:8px;">
+                            <i class="fas fa-envelope" style="color:#1e1548;font-size:.8rem;width:16px;text-align:center;"></i>
+                            <a id="modal-nom-email" href="#" style="font-size:.85rem;color:#1e1548;text-decoration:none;"></a>
+                        </div>
+                        <div id="modal-nom-phone-row" style="display:none;align-items:center;gap:8px;">
+                            <i class="fas fa-phone" style="color:#1e1548;font-size:.8rem;width:16px;text-align:center;"></i>
+                            <span id="modal-nom-phone" style="font-size:.85rem;color:#444;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video link -->
+                <div id="modal-nom-video-wrap" style="display:none;margin-bottom:14px;">
+                    <a id="modal-nom-video" href="#" target="_blank" rel="noopener"
+                       style="display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:#ed1c24;font-weight:600;text-decoration:none;">
+                        <i class="fas fa-play-circle" style="font-size:1rem;"></i> Watch Video
+                    </a>
+                </div>
+
+                <!-- Social links -->
+                <div id="modal-nom-socials-wrap" style="display:none;">
+                    <p style="font-size:.75rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin:0 0 8px;">Social</p>
+                    <div id="modal-nom-socials" style="display:flex;gap:10px;flex-wrap:wrap;"></div>
+                </div>
+
+            </div><!-- /modal-body -->
+
+            <?php if ($isVotingOpen): ?>
+            <div class="modal-footer" style="padding:14px 22px;background:#f9fafb;border-top:1px solid #f0f0f0;justify-content:center;">
+                <a href="#" id="modal-vote-btn" class="theme-btn btn-style-one" style="font-size:.85rem;padding:10px 24px;width:100%;text-align:center;">
+                    <span class="btn-title"><i class="fas fa-vote-yea me-1"></i> Vote for this Nominee</span>
+                </a>
+            </div>
+            <?php endif; ?>
+
+        </div>
+    </div>
+</div>
+
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 <?php include 'includes/footer-links.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
     // FancyBox gallery
@@ -1019,7 +1305,184 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).tab('show');
     });
+
+    // ── Nominee Modal ───────────────────────────────────────
+    $(document).on('click', '.nom-card-col', function() {
+        var $this     = $(this);
+        var nomId     = $this.data('nom-id');
+        var name      = $this.data('nom-name');
+        var subtitle  = $this.data('nom-subtitle');
+        var desc      = $this.data('nom-description');
+        var img       = $this.data('nom-image');
+        var ini       = $this.data('nom-initials');
+        var color     = $this.data('nom-color');
+        var votes     = parseInt($this.data('nom-votes'), 10) || 0;
+        var isWinner  = parseInt($this.data('nom-winner'), 10);
+        var winnerPos = $this.data('nom-winner-pos');
+        var cat       = $this.data('nom-cat');
+        var code      = $this.data('nom-code');
+        var email     = $this.data('nom-email');
+        var phone     = $this.data('nom-phone');
+        var video     = $this.data('nom-video');
+        var socialsRaw = $this.data('nom-socials');
+        var socials   = {};
+        try { socials = typeof socialsRaw === 'object' ? socialsRaw : JSON.parse(socialsRaw || '{}'); } catch(e) {}
+
+        // Header
+        $('#modal-nom-cat').text(cat);
+        $('#modal-nom-name').text(name);
+
+        // Avatar
+        if (img) {
+            $('#modal-nom-img').attr('src', img).attr('alt', name).show();
+            $('#modal-nom-initials').hide();
+        } else {
+            $('#modal-nom-img').hide();
+            $('#modal-nom-initials').text(ini).css('background-color', color).show();
+        }
+
+        // Winner badge
+        if (isWinner) {
+            var wLabel = winnerPos ? 'Winner — #' + winnerPos : 'Winner';
+            $('#modal-nom-winner-label').text(wLabel);
+            $('#modal-nom-winner').css('display', 'inline-block');
+        } else {
+            $('#modal-nom-winner').hide();
+        }
+
+        // Subtitle
+        $('#modal-nom-subtitle').text(subtitle || '').toggle(!!subtitle);
+
+        // Code
+        if (code) {
+            $('#modal-nom-code').text(code);
+            $('#modal-nom-code-wrap').show();
+        } else {
+            $('#modal-nom-code-wrap').hide();
+        }
+
+        // Votes
+        $('#modal-nom-votes').text(votes.toLocaleString() + ' votes');
+
+        // Description
+        if (desc) {
+            $('#modal-nom-desc').text(desc);
+            $('#modal-nom-desc-wrap').show();
+        } else {
+            $('#modal-nom-desc-wrap').hide();
+        }
+
+        // Contact
+        var hasContact = false;
+        if (email) {
+            $('#modal-nom-email').text(email).attr('href', 'mailto:' + email);
+            $('#modal-nom-email-row').css('display', 'flex');
+            hasContact = true;
+        } else {
+            $('#modal-nom-email-row').hide();
+        }
+        if (phone) {
+            $('#modal-nom-phone').text(phone);
+            $('#modal-nom-phone-row').css('display', 'flex');
+            hasContact = true;
+        } else {
+            $('#modal-nom-phone-row').hide();
+        }
+        $('#modal-nom-contact-wrap').toggle(hasContact);
+
+        // Video
+        if (video) {
+            $('#modal-nom-video').attr('href', video);
+            $('#modal-nom-video-wrap').show();
+        } else {
+            $('#modal-nom-video-wrap').hide();
+        }
+
+        // Social links
+        var socialIcons = {
+            facebook:  { icon:'fab fa-facebook-f',   color:'#1877f2', label:'Facebook' },
+            twitter:   { icon:'fab fa-twitter',       color:'#1da1f2', label:'Twitter'  },
+            instagram: { icon:'fab fa-instagram',     color:'#e1306c', label:'Instagram'},
+            linkedin:  { icon:'fab fa-linkedin-in',   color:'#0a66c2', label:'LinkedIn' },
+            youtube:   { icon:'fab fa-youtube',       color:'#ff0000', label:'YouTube'  },
+            tiktok:    { icon:'fab fa-tiktok',        color:'#010101', label:'TikTok'   },
+            website:   { icon:'fas fa-globe',         color:'#1e1548', label:'Website'  }
+        };
+        var $socialContainer = $('#modal-nom-socials').empty();
+        var hasSocials = false;
+        $.each(socials, function(platform, url) {
+            if (!url) return;
+            var cfg = socialIcons[platform.toLowerCase()] || { icon:'fas fa-link', color:'#888', label: platform };
+            hasSocials = true;
+            $socialContainer.append(
+                '<a href="' + url + '" target="_blank" rel="noopener" title="' + cfg.label + '" ' +
+                'style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:' + cfg.color + ';color:#fff;font-size:.82rem;text-decoration:none;">' +
+                '<i class="' + cfg.icon + '"></i></a>'
+            );
+        });
+        $('#modal-nom-socials-wrap').toggle(hasSocials);
+
+        // Vote button
+        if ($('#modal-vote-btn').length) {
+            $('#modal-vote-btn').attr('href', '<?= SITE_URL ?>/vote-bundle?event=<?= urlencode($slug) ?>&nominee=' + nomId);
+        }
+
+        $('#nomineeModal').modal('show');
+    });
+
+    // ── Live search & Filter nominees ────────────────────────
+    function filterNominees() {
+        var q = $('#nom-search').val() ? $('#nom-search').val().trim().toLowerCase() : '';
+        var selectedCatId = $('#nom-cat-jump').length ? $('#nom-cat-jump').val() : 'all';
+        var totalVisible = 0;
+
+        $('.nom-cat-section').each(function() {
+            var $section  = $(this);
+            var sectionId = $section.attr('id');
+            
+            // Cat match
+            var catMatches = (selectedCatId === 'all' || !selectedCatId || sectionId === selectedCatId);
+            
+            if (!catMatches) {
+                $section.addClass('d-none');
+                return; // skip inner loops
+            }
+
+            var secVisible = 0;
+            $section.find('.nom-card-col').each(function() {
+                var name     = $(this).data('name')     || '';
+                var subtitle = $(this).data('subtitle') || '';
+                var matches  = !q || name.indexOf(q) > -1 || subtitle.indexOf(q) > -1;
+                $(this).toggleClass('d-none', !matches);
+                if (matches) secVisible++;
+            });
+
+            // Section is visible if catMatches AND text search has results (or no text search)
+            var searchMatches = (q.length === 0) || (secVisible > 0);
+            $section.toggleClass('d-none', !searchMatches);
+            
+            totalVisible += secVisible;
+        });
+
+        // Show/hide "no results" message
+        if (q.length > 0 && totalVisible === 0) {
+            $('#nom-no-results').show();
+        } else {
+            $('#nom-no-results').hide();
+        }
+    }
+
+    $('#nom-search').on('input', filterNominees);
+
+    // ── Select2: Filter by category ───────────────────────────
+    if ($('#nom-cat-jump').length) {
+        $('#nom-cat-jump').select2({
+            minimumResultsForSearch: 10,
+            width: '100%'
+        }).on('change', filterNominees);
+    }
 });
 </script>
+
 </body>
 </html>

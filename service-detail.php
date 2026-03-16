@@ -218,7 +218,7 @@ $otherServices = array_filter($services, fn($k) => $k !== $id, ARRAY_FILTER_USE_
                 <h2 class="section-heading mb-3"><?= htmlspecialchars($service['title']) ?></h2>
                 <p class="mb-2" style="color:#777;font-size:.88rem;text-transform:uppercase;letter-spacing:1px;"><?= htmlspecialchars($service['tagline']) ?></p>
                 <p class="mb-4" style="color:#555;font-size:.96rem;line-height:1.8;"><?= htmlspecialchars($service['desc']) ?></p>
-                <a href="https://tuqiohub.africa/register" target="_blank" rel="noopener" class="theme-btn btn-style-one me-3">
+                <a href="<?php echo API_BASE; ?>/register" target="_blank" rel="noopener" class="theme-btn btn-style-one me-3">
                     <span class="btn-title">Get Started</span>
                 </a>
                 <a href="<?= SITE_URL ?>/contact" class="theme-btn btn-style-two">
@@ -280,7 +280,7 @@ $otherServices = array_filter($services, fn($k) => $k !== $id, ARRAY_FILTER_USE_
     <div class="auto-container text-center">
         <h2 style="color:#fff;font-weight:900;margin-bottom:14px;">Ready to use <?= htmlspecialchars($service['title']) ?>?</h2>
         <p style="color:rgba(255,255,255,.7);font-size:.95rem;margin-bottom:30px;max-width:480px;margin-left:auto;margin-right:auto;">Create your organizer account and get your event live in days, not weeks.</p>
-        <a href="https://tuqiohub.africa/register" target="_blank" rel="noopener" class="theme-btn btn-style-one me-3">
+        <a href="<?php echo API_BASE; ?>/register" target="_blank" rel="noopener" class="theme-btn btn-style-one me-3">
             <span class="btn-title">Create Account</span>
         </a>
         <a href="<?= SITE_URL ?>/contact" class="theme-btn btn-style-two">
