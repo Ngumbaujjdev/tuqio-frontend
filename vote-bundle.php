@@ -985,11 +985,15 @@ window.VotePage = (function () {
         const modal = document.getElementById('payConfirmModal');
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        const bar = document.getElementById('mobPayBar');
+        if (bar) bar.style.display = 'none';
     }
 
     function closeConfirm() {
         document.getElementById('payConfirmModal').style.display = 'none';
         document.body.style.overflow = '';
+        const bar = document.getElementById('mobPayBar');
+        if (bar) bar.style.display = '';
         _pendingPayload = null;
         _pendingMethod  = null;
     }
