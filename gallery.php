@@ -19,7 +19,7 @@ $events      = $resp['events'] ?? [];
 <meta name="keywords" content="event photos Kenya, Tuqio Hub gallery, awards ceremony photos, Kenya events highlights, event photography Nairobi">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqio.independentkenyawomenawards.com/gallery.php">
+<link rel="canonical" href="https://tuqiohub.africa/gallery.php">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Photo Gallery | Tuqio Hub">
@@ -33,7 +33,7 @@ $events      = $resp['events'] ?? [];
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqio.independentkenyawomenawards.com/gallery.php">
+<meta property="og:url" content="https://tuqiohub.africa/gallery.php">
 <meta property="og:description" content="Browse photos and highlights from Tuqio Hub events across Kenya.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -50,17 +50,17 @@ $events      = $resp['events'] ?? [];
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"Gallery","item":"https://tuqio.independentkenyawomenawards.com/gallery.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Gallery","item":"https://tuqiohub.africa/gallery.php"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Photo Gallery | Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com/gallery.php","description":"Browse photos and highlights from Tuqio Hub events."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Photo Gallery | Tuqio Hub","url":"https://tuqiohub.africa/gallery.php","description":"Browse photos and highlights from Tuqio Hub events."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

@@ -14,6 +14,7 @@
                     <li><a href="<?= SOCIAL_TWITTER ?>" title="Twitter / X" target="_blank" rel="noopener"><span class="fab fa-twitter"></span></a></li>
                     <li><a href="<?= SOCIAL_INSTAGRAM ?>" title="Instagram" target="_blank" rel="noopener"><span class="fab fa-instagram"></span></a></li>
                     <li><a href="<?= SOCIAL_LINKEDIN ?>" title="LinkedIn" target="_blank" rel="noopener"><span class="fab fa-linkedin-in"></span></a></li>
+                    <li><a href="<?= SOCIAL_TIKTOK ?>" title="TikTok" target="_blank" rel="noopener"><span class="fab fa-tiktok"></span></a></li>
                 </ul>
             </div>
         </div>

@@ -125,7 +125,7 @@ $seoDesc  = htmlspecialchars(strip_tags($event['tagline'] ?? $event['short_descr
 $seoDesc  = mb_strimwidth($seoDesc, 0, 160, '...');
 $seoSlug  = urlencode($slug);
 $seoImg   = !empty($event['banner_image']) ? API_STORAGE . $event['banner_image'] : OG_IMAGE;
-$seoUrl   = 'https://tuqio.independentkenyawomenawards.com/event-detail.php?slug=' . $seoSlug;
+$seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
 ?>
 
 <!-- SEO -->
@@ -165,17 +165,17 @@ $seoUrl   = 'https://tuqio.independentkenyawomenawards.com/event-detail.php?slug
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"Events","item":"https://tuqio.independentkenyawomenawards.com/events.php"},{"@type":"ListItem","position":3,"name":"<?= addslashes($event['name'] ?? '') ?>","item":"<?= $seoUrl ?>"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Events","item":"https://tuqiohub.africa/events.php"},{"@type":"ListItem","position":3,"name":"<?= addslashes($event['name'] ?? '') ?>","item":"<?= $seoUrl ?>"}]}
 </script>
 
 <!-- JSON-LD: Event -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Event","name":"<?= addslashes($event['name'] ?? '') ?>","url":"<?= $seoUrl ?>","description":"<?= addslashes($seoDesc) ?>","image":"<?= $seoImg ?>","startDate":"<?= $event['start_date'] ?? '' ?>","endDate":"<?= $event['end_date'] ?? $event['start_date'] ?? '' ?>","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"<?= addslashes($event['venue_name'] ?? 'Nairobi, Kenya') ?>","address":{"@type":"PostalAddress","addressLocality":"<?= addslashes($event['venue_city'] ?? 'Nairobi') ?>","addressCountry":"KE"}},"organizer":{"@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com"}}
+{"@context":"https://schema.org","@type":"Event","name":"<?= addslashes($event['name'] ?? '') ?>","url":"<?= $seoUrl ?>","description":"<?= addslashes($seoDesc) ?>","image":"<?= $seoImg ?>","startDate":"<?= $event['start_date'] ?? '' ?>","endDate":"<?= $event['end_date'] ?? $event['start_date'] ?? '' ?>","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"<?= addslashes($event['venue_name'] ?? 'Nairobi, Kenya') ?>","address":{"@type":"PostalAddress","addressLocality":"<?= addslashes($event['venue_city'] ?? 'Nairobi') ?>","addressCountry":"KE"}},"organizer":{"@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa"}}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

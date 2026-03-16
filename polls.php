@@ -16,7 +16,7 @@ $polls = $resp['data'] ?? [];
 <meta name="keywords" content="live polls Kenya, community polls, Tuqio Hub polls, online voting polls, real-time results Kenya">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqio.independentkenyawomenawards.com/polls.php">
+<link rel="canonical" href="https://tuqiohub.africa/polls.php">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Community Polls | Tuqio Hub">
@@ -30,7 +30,7 @@ $polls = $resp['data'] ?? [];
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqio.independentkenyawomenawards.com/polls.php">
+<meta property="og:url" content="https://tuqiohub.africa/polls.php">
 <meta property="og:description" content="Participate in live community polls on Tuqio Hub and see real-time results.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -47,17 +47,17 @@ $polls = $resp['data'] ?? [];
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"Polls","item":"https://tuqio.independentkenyawomenawards.com/polls.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Polls","item":"https://tuqiohub.africa/polls.php"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Community Polls | Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com/polls.php","description":"Participate in live community polls on Tuqio Hub."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Community Polls | Tuqio Hub","url":"https://tuqiohub.africa/polls.php","description":"Participate in live community polls on Tuqio Hub."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

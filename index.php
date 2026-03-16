@@ -25,7 +25,7 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
 <meta name="keywords" content="Tuqio Hub, Kenya events, event management, nominations Kenya, voting platform, awards Kenya, live events Nairobi">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqio.independentkenyawomenawards.com/">
+<link rel="canonical" href="https://tuqiohub.africa/">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Tuqio Hub — Kenya's Premier Event Hub">
@@ -39,7 +39,7 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqio.independentkenyawomenawards.com/">
+<meta property="og:url" content="https://tuqiohub.africa/">
 <meta property="og:description" content="Kenya's premier event management platform powering nominations, voting, ticketing, and live events.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -56,12 +56,12 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","description":"Kenya's premier event management and awards platform powering nominations, voting, ticketing, and live events.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform powering nominations, voting, ticketing, and live events.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: WebSite -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","description":"Kenya's premier event management platform powering nominations, voting, ticketing, and live events.","potentialAction":{"@type":"SearchAction","target":"https://tuqio.independentkenyawomenawards.com/events.php?q={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebSite","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management platform powering nominations, voting, ticketing, and live events.","potentialAction":{"@type":"SearchAction","target":"https://tuqiohub.africa/events.php?q={search_term_string}","query-input":"required name=search_term_string"}}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

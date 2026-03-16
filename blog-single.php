@@ -43,7 +43,7 @@ $seoPostDesc  = htmlspecialchars(strip_tags($post['excerpt'] ?? mb_substr($post[
 $seoPostDesc  = mb_strimwidth($seoPostDesc, 0, 160, '...');
 $seoPostImg   = !empty($featImg) ? API_STORAGE . $featImg : OG_IMAGE;
 $seoPostSlug  = urlencode($post['slug'] ?? '');
-$seoPostUrl   = 'https://tuqio.independentkenyawomenawards.com/blog-single.php?slug=' . $seoPostSlug;
+$seoPostUrl   = 'https://tuqiohub.africa/blog-single.php?slug=' . $seoPostSlug;
 $seoPostDate  = $post['published_at'] ?? $post['created_at'] ?? '';
 ?>
 
@@ -85,17 +85,17 @@ $seoPostDate  = $post['published_at'] ?? $post['created_at'] ?? '';
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tuqio.independentkenyawomenawards.com/blog.php"},{"@type":"ListItem","position":3,"name":"<?= addslashes($post['title'] ?? '') ?>","item":"<?= $seoPostUrl ?>"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tuqiohub.africa/blog.php"},{"@type":"ListItem","position":3,"name":"<?= addslashes($post['title'] ?? '') ?>","item":"<?= $seoPostUrl ?>"}]}
 </script>
 
 <!-- JSON-LD: Article -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"<?= addslashes($post['title'] ?? '') ?>","description":"<?= addslashes($seoPostDesc) ?>","image":"<?= $seoPostImg ?>","url":"<?= $seoPostUrl ?>","datePublished":"<?= $seoPostDate ?>","author":{"@type":"Person","name":"<?= addslashes($post['author_name'] ?? 'Tuqio Hub') ?>"},"publisher":{"@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com"}}
+{"@context":"https://schema.org","@type":"Article","headline":"<?= addslashes($post['title'] ?? '') ?>","description":"<?= addslashes($seoPostDesc) ?>","image":"<?= $seoPostImg ?>","url":"<?= $seoPostUrl ?>","datePublished":"<?= $seoPostDate ?>","author":{"@type":"Person","name":"<?= addslashes($post['author_name'] ?? 'Tuqio Hub') ?>"},"publisher":{"@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa"}}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

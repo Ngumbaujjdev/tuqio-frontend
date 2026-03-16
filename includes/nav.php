@@ -125,6 +125,7 @@ $_navUpcoming = array_slice(array_values($_navUpcoming), 0, 5);
                             <li class="dropdown"><a href="#">About</a>
                                 <ul>
                                     <li><a href="<?php echo SITE_URL; ?>/about">About Tuqio</a></li>
+                                    <li><a href="<?php echo SITE_URL; ?>/pricing">Pricing</a></li>
                                     <li><a href="<?php echo SITE_URL; ?>/faq">FAQ</a></li>
                                     <li><a href="<?php echo SITE_URL; ?>/contact">Contact</a></li>
                                 </ul>
@@ -139,8 +140,8 @@ $_navUpcoming = array_slice(array_values($_navUpcoming), 0, 5);
                         <span class="icon fa fa-search"></span>
                     </div>
                     <div class="btn-box">
-                        <a href="<?php echo ADMIN_URL; ?>"
-                           class="theme-btn btn-style-one">
+                        <a href="<?php echo API_BASE; ?>/register"
+                           class="theme-btn btn-style-one" target="_blank" rel="noopener">
                             <span class="btn-title">Host an Event</span>
                         </a>
                     </div>

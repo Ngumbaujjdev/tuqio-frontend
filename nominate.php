@@ -29,7 +29,7 @@ if ($selectedSlug) {
 <meta name="keywords" content="nominate Kenya, submit nomination awards, Tuqio Hub nominations, Kenya awards nomination, recognise outstanding Kenyans">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqio.independentkenyawomenawards.com/nominate.php">
+<link rel="canonical" href="https://tuqiohub.africa/nominate.php">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Nominate | Tuqio Hub">
@@ -43,7 +43,7 @@ if ($selectedSlug) {
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqio.independentkenyawomenawards.com/nominate.php">
+<meta property="og:url" content="https://tuqiohub.africa/nominate.php">
 <meta property="og:description" content="Submit a nomination on Tuqio Hub. Recognise outstanding Kenyans in leadership, business, and community.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -60,17 +60,17 @@ if ($selectedSlug) {
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"Nominate","item":"https://tuqio.independentkenyawomenawards.com/nominate.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Nominate","item":"https://tuqiohub.africa/nominate.php"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Nominate | Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com/nominate.php","description":"Submit a nomination on Tuqio Hub. Recognise outstanding Kenyans."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Nominate | Tuqio Hub","url":"https://tuqiohub.africa/nominate.php","description":"Submit a nomination on Tuqio Hub. Recognise outstanding Kenyans."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

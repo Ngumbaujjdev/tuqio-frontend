@@ -39,8 +39,11 @@
                         <ul class="social-icon-two" style="list-style:none;padding:0;display:flex;gap:10px;flex-wrap:wrap;">
                             <?php
                             $socials = [
-                                ['fab fa-facebook-f','#'],['fab fa-twitter','#'],
-                                ['fab fa-instagram','#'],['fab fa-linkedin-in','#'],['fab fa-youtube','#']
+                                ['fab fa-facebook-f', SOCIAL_FACEBOOK],
+                                ['fab fa-twitter',    SOCIAL_TWITTER],
+                                ['fab fa-instagram',  SOCIAL_INSTAGRAM],
+                                ['fab fa-tiktok',     SOCIAL_TIKTOK],
+                                ['fab fa-linkedin-in',SOCIAL_LINKEDIN],
                             ];
                             foreach ($socials as [$icon,$href]): ?>
                             <li>
@@ -135,20 +138,20 @@
                             <li style="display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;">
                                 <span style="color:#ed1c24;font-size:18px;margin-top:2px;min-width:20px;"><i class="flaticon-email-1"></i></span>
                                 <div>
-                                    <a href="mailto:hello@tuqio.com"
+                                    <a href="mailto:<?= ADMIN_EMAIL ?>"
                                        style="color:rgba(255,255,255,0.75);font-size:.9rem;text-decoration:none;"
                                        onmouseover="this.style.color='#ed1c24';"
-                                       onmouseout="this.style.color='rgba(255,255,255,0.75)';">hello@tuqio.com</a><br>
+                                       onmouseout="this.style.color='rgba(255,255,255,0.75)';"><?= ADMIN_EMAIL ?></a><br>
                                     <span style="color:rgba(255,255,255,0.45);font-size:.8rem;">Email Us</span>
                                 </div>
                             </li>
                             <li style="display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;">
                                 <span style="color:#ed1c24;font-size:18px;margin-top:2px;min-width:20px;"><i class="flaticon-call-1"></i></span>
                                 <div>
-                                    <a href="tel:+254700000000"
+                                    <a href="tel:<?= SITE_PHONE ?>"
                                        style="color:rgba(255,255,255,0.75);font-size:.9rem;text-decoration:none;"
                                        onmouseover="this.style.color='#ed1c24';"
-                                       onmouseout="this.style.color='rgba(255,255,255,0.75)';">+254 700 000 000</a><br>
+                                       onmouseout="this.style.color='rgba(255,255,255,0.75)';"><?= SITE_PHONE ?></a><br>
                                     <span style="color:rgba(255,255,255,0.45);font-size:.8rem;">Call Us</span>
                                 </div>
                             </li>

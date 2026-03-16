@@ -13,7 +13,7 @@ include 'libs/App.php';
 <meta name="keywords" content="Tuqio Hub FAQ, how to vote Kenya, how to nominate Kenya, event tickets FAQ, Tuqio Hub help">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqio.independentkenyawomenawards.com/faq.php">
+<link rel="canonical" href="https://tuqiohub.africa/faq.php">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Frequently Asked Questions | Tuqio Hub">
@@ -27,7 +27,7 @@ include 'libs/App.php';
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqio.independentkenyawomenawards.com/faq.php">
+<meta property="og:url" content="https://tuqiohub.africa/faq.php">
 <meta property="og:description" content="Find answers to common questions about Tuqio Hub events, voting, nominations, and tickets.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -44,17 +44,17 @@ include 'libs/App.php';
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://tuqio.independentkenyawomenawards.com/faq.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://tuqiohub.africa/faq.php"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Frequently Asked Questions | Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com/faq.php","description":"Find answers to common questions about Tuqio Hub events, voting, nominations, and tickets."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Frequently Asked Questions | Tuqio Hub","url":"https://tuqiohub.africa/faq.php","description":"Find answers to common questions about Tuqio Hub events, voting, nominations, and tickets."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
@@ -151,7 +151,7 @@ include 'libs/App.php';
                 <div class="mb-5">
                     <div class="faq-category-title" id="organizers">For Organizers</div>
                     <div class="accordion" id="faqOrganizers">
-                        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#o1">How do I list my event?</button></h2><div id="o1" class="accordion-collapse collapse show" data-bs-parent="#faqOrganizers"><div class="accordion-body">Register at <a href="https://tuqio.independentkenyawomenawards.com/register" target="_blank" rel="noopener" style="color:#ed1c24;">Tuqio Hub</a>. Our team will review your application and reach out within 2 business days to schedule an onboarding call.</div></div></div>
+                        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#o1">How do I list my event?</button></h2><div id="o1" class="accordion-collapse collapse show" data-bs-parent="#faqOrganizers"><div class="accordion-body">Register at <a href="https://tuqiohub.africa/register" target="_blank" rel="noopener" style="color:#ed1c24;">Tuqio Hub</a>. Our team will review your application and reach out within 2 business days to schedule an onboarding call.</div></div></div>
                         <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#o2">Can I manage my event myself?</button></h2><div id="o2" class="accordion-collapse collapse" data-bs-parent="#faqOrganizers"><div class="accordion-body">Yes. Once onboarded, you get access to your organizer dashboard to manage nominees, approve nominations, monitor voting, publish schedules, upload photos, and run polls — no technical help needed.</div></div></div>
                         <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#o3">Does Tuqio handle ticketing and payments?</button></h2><div id="o3" class="accordion-collapse collapse" data-bs-parent="#faqOrganizers"><div class="accordion-body">Yes. Tuqio integrates with popular payment gateways to handle ticket sales. Funds are settled to your organization on an agreed schedule. Transaction fees apply.</div></div></div>
                         <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#o4">What data and reports do I get?</button></h2><div id="o4" class="accordion-collapse collapse" data-bs-parent="#faqOrganizers"><div class="accordion-body">Real-time dashboards with ticket sales, vote counts, poll responses, and page views. Reports can be exported to Excel/CSV for stakeholder presentations.</div></div></div>
@@ -194,7 +194,7 @@ include 'libs/App.php';
                             <li><a href="nominees"><i class="fas fa-vote-yea me-2" style="color:#ed1c24;"></i>Vote for Nominees</a></li>
                             <li><a href="nominate"><i class="fas fa-user-plus me-2" style="color:#ed1c24;"></i>Submit a Nomination</a></li>
                             <li><a href="polls"><i class="fas fa-poll me-2" style="color:#ed1c24;"></i>Live Polls</a></li>
-                            <li><a href="https://tuqio.independentkenyawomenawards.com/register" target="_blank" rel="noopener"><i class="fas fa-star me-2" style="color:#ed1c24;"></i>Become an Organizer</a></li>
+                            <li><a href="https://tuqiohub.africa/register" target="_blank" rel="noopener"><i class="fas fa-star me-2" style="color:#ed1c24;"></i>Become an Organizer</a></li>
                         </ul>
                     </div>
                 </aside>

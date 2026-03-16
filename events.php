@@ -42,7 +42,7 @@ $sidebarUpcoming = array_slice($upcoming, 0, 5);
 <meta name="keywords" content="Kenya events, upcoming events Nairobi, award ceremonies Kenya, conferences Kenya, Tuqio Hub events">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqio.independentkenyawomenawards.com/events.php">
+<link rel="canonical" href="https://tuqiohub.africa/events.php">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Upcoming Events | Tuqio Hub">
@@ -56,7 +56,7 @@ $sidebarUpcoming = array_slice($upcoming, 0, 5);
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqio.independentkenyawomenawards.com/events.php">
+<meta property="og:url" content="https://tuqiohub.africa/events.php">
 <meta property="og:description" content="Browse all upcoming and past events on Tuqio Hub — award ceremonies, conferences, and live experiences across Kenya.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -73,17 +73,17 @@ $sidebarUpcoming = array_slice($upcoming, 0, 5);
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"Events","item":"https://tuqio.independentkenyawomenawards.com/events.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Events","item":"https://tuqiohub.africa/events.php"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Upcoming Events | Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com/events.php","description":"Browse all upcoming and past events on Tuqio Hub."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Upcoming Events | Tuqio Hub","url":"https://tuqiohub.africa/events.php","description":"Browse all upcoming and past events on Tuqio Hub."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

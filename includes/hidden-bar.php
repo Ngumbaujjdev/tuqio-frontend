@@ -67,7 +67,7 @@
         btn.querySelector('.btn-title').textContent = 'Sending…';
         feedback.style.display = 'none';
 
-        fetch('<?php echo defined("API_BASE") ? API_BASE : "https://tuqio.independentkenyawomenawards.com"; ?>/api/public/contact', {
+        fetch('<?php echo defined("API_BASE") ? API_BASE : "https://platform.tuqiohub.africa"; ?>/api/public/contact', {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: params

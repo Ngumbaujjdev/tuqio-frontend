@@ -14,7 +14,7 @@ $stats = tuqio_api('/api/public/stats');
 <meta name="keywords" content="about Tuqio Hub, Kenya event platform, awards management Kenya, event technology Nairobi, voting system Kenya">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqio.independentkenyawomenawards.com/about.php">
+<link rel="canonical" href="https://tuqiohub.africa/about.php">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="About Tuqio Hub">
@@ -28,7 +28,7 @@ $stats = tuqio_api('/api/public/stats');
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqio.independentkenyawomenawards.com/about.php">
+<meta property="og:url" content="https://tuqiohub.africa/about.php">
 <meta property="og:description" content="Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -45,17 +45,17 @@ $stats = tuqio_api('/api/public/stats');
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"tuqio@independentkenyawomenawards.com","contactType":"customer support"},"sameAs":["https://www.instagram.com/tuqiohub","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub"]}
+{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqio.independentkenyawomenawards.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://tuqio.independentkenyawomenawards.com/about.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"About","item":"https://tuqiohub.africa/about.php"}]}
 </script>
 
 <!-- JSON-LD: AboutPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"AboutPage","name":"About Tuqio Hub","url":"https://tuqio.independentkenyawomenawards.com/about.php","description":"Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls."}
+{"@context":"https://schema.org","@type":"AboutPage","name":"About Tuqio Hub","url":"https://tuqiohub.africa/about.php","description":"Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
@@ -365,7 +365,7 @@ $stats = tuqio_api('/api/public/stats');
             </div>
         </div>
         <div class="text-center mt-5">
-            <a href="https://tuqio.independentkenyawomenawards.com/register" target="_blank" rel="noopener" class="theme-btn btn-style-one">
+            <a href="https://tuqiohub.africa/register" target="_blank" rel="noopener" class="theme-btn btn-style-one">
                 <span class="btn-title"><i class="fas fa-rocket me-2"></i>Get Started Today</span>
             </a>
         </div>
@@ -423,7 +423,7 @@ $stats = tuqio_api('/api/public/stats');
                     <i class="fas fa-rocket mb-4" style="font-size:3rem;opacity:.8;display:block;"></i>
                     <h3>Ready to Host Your Event?</h3>
                     <p>Join the growing list of Kenyan event organizers who trust Tuqio Hub to power their events.</p>
-                    <a href="https://tuqio.independentkenyawomenawards.com/register" target="_blank" rel="noopener" class="theme-btn btn-style-two cta-box-btn">
+                    <a href="https://tuqiohub.africa/register" target="_blank" rel="noopener" class="theme-btn btn-style-two cta-box-btn">
                         <span class="btn-title">Create Your Account</span>
                     </a>
                 </div>

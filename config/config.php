@@ -13,14 +13,15 @@ define("SITE_URL", match(true) {
     default  => "https://tuqio.independentkenyawomenawards.com",
 });
 define("SITE_NAME",   "Tuqio Hub");
-define("ADMIN_EMAIL", $isNew ? "tuqio@tuqiohub.africa" : "tuqiohub@independentkenyawomenawards.com");
+define("ADMIN_EMAIL", $isNew ? "info@tuqiohub.africa" : "tuqiohub@independentkenyawomenawards.com");
 define("SITE_PHONE",  "+254757140682");
 
 // ─── Social ────────────────────────────────────────────────────────────────
-define("SOCIAL_INSTAGRAM", "https://www.instagram.com/tuqiohub");
-define("SOCIAL_FACEBOOK",  "https://www.facebook.com/tuqiohub");
+define("SOCIAL_FACEBOOK",  "https://www.facebook.com/share/p/1DJyLwtvqf/");
+define("SOCIAL_INSTAGRAM", "https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==");
 define("SOCIAL_TWITTER",   "https://twitter.com/tuqiohub");
 define("SOCIAL_LINKEDIN",  "https://www.linkedin.com/company/tuqiohub");
+define("SOCIAL_TIKTOK",    "https://www.tiktok.com/@tuqiohubke");
 
 // ─── OG image ──────────────────────────────────────────────────────────────
 define("OG_IMAGE", $isNew
