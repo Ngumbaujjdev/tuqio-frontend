@@ -13,7 +13,8 @@ $scheduleDays = $resp['schedule_days'] ?? [];
 $speakers     = $resp['speakers']      ?? [];
 $sponsors     = $resp['sponsors']      ?? [];
 $faqs         = $resp['faqs']          ?? [];
-$ticketTypes  = $resp['ticket_types']  ?? [];
+$ticketTypes     = $resp['ticket_types']  ?? [];
+$anyTicketOnSale = !empty($ticketTypes) && count(array_filter($ticketTypes, fn($t) => !empty($t['is_available']))) > 0;
 
 // Gallery (separate call)
 $galleryResp = tuqio_api('/api/public/events/' . urlencode($slug) . '/gallery');
@@ -1079,7 +1080,7 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
 
                     <!-- Ticket CTA (lifecycle-aware) -->
                     <?php if ($hasTicketing): ?>
-                    <?php if ($phase === 'on_sale' || !empty($ticketTypes)): ?>
+                    <?php if ($anyTicketOnSale): ?>
                     <div style="background:linear-gradient(135deg,#1e1548,#2d1f6b);border-radius:12px;padding:26px;text-align:center;color:#fff;margin-bottom:24px;" id="tickets">
                         <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:2px;opacity:.7;margin-bottom:8px;">Get Your Ticket</div>
                         <h5 style="font-weight:800;margin-bottom:16px;"><?= htmlspecialchars($event['name']) ?></h5>
@@ -1088,11 +1089,12 @@ $seoUrl   = 'https://tuqiohub.africa/event-detail.php?slug=' . $seoSlug;
                             <span class="btn-title" style="color:#ffffff;"><i class="fas fa-ticket-alt me-2"></i> Buy Tickets</span>
                         </a>
                     </div>
-                    <?php else: ?>
+                    <?php elseif (!empty($ticketTypes)): ?>
                     <div class="locked-cta" id="tickets">
                         <i class="fas fa-ticket-alt"></i>
                         <div class="locked-title">Tickets Coming Soon</div>
-                        <div class="locked-sub">Ticket sales have not started yet. Check back soon.</div>
+                        <?php $earliest = min(array_filter(array_column($ticketTypes, 'sale_starts_at'))); ?>
+                        <div class="locked-sub">Ticket sales open <?= $earliest ? date('M j, Y', strtotime($earliest)) : 'soon' ?>. Check back then.</div>
                     </div>
                     <?php endif; ?>
                     <?php endif; ?>
