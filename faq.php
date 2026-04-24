@@ -8,12 +8,12 @@ include 'libs/App.php';
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Frequently Asked Questions | Tuqio Hub</title>
+<title>Help Centre — How to Vote, Nominate &amp; Buy Tickets on Tuqio Hub</title>
 <meta name="description" content="Find answers to common questions about Tuqio Hub — how to vote, nominate, buy tickets, and participate in events across Kenya.">
-<meta name="keywords" content="Tuqio Hub FAQ, how to vote Kenya, how to nominate Kenya, event tickets FAQ, Tuqio Hub help">
+<meta name="keywords" content="Tuqio Hub FAQ, how to vote Kenya awards, how to nominate Kenya, event tickets help Kenya, Tuqio Hub help centre, how does Tuqio Hub work, Kenya voting questions, awards nominations help, buy event tickets Kenya FAQ">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqiohub.africa/faq.php">
+<link rel="canonical" href="https://tuqiohub.africa/faq">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Frequently Asked Questions | Tuqio Hub">
@@ -27,7 +27,7 @@ include 'libs/App.php';
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqiohub.africa/faq.php">
+<meta property="og:url" content="https://tuqiohub.africa/faq">
 <meta property="og:description" content="Find answers to common questions about Tuqio Hub events, voting, nominations, and tickets.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -44,17 +44,17 @@ include 'libs/App.php';
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://tuqiohub.africa/faq.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://tuqiohub.africa/faq"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Frequently Asked Questions | Tuqio Hub","url":"https://tuqiohub.africa/faq.php","description":"Find answers to common questions about Tuqio Hub events, voting, nominations, and tickets."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Frequently Asked Questions | Tuqio Hub","url":"https://tuqiohub.africa/faq","description":"Find answers to common questions about Tuqio Hub events, voting, nominations, and tickets."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
@@ -121,7 +121,7 @@ include 'libs/App.php';
                 <div class="mb-5">
                     <div class="faq-category-title" id="general">General</div>
                     <div class="accordion" id="faqGeneral">
-                        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#g1">What is Tuqio Hub?</button></h2><div id="g1" class="accordion-collapse collapse show" data-bs-parent="#faqGeneral"><div class="accordion-body">Tuqio Hub is Kenya's premier event management platform. We help organizers run awards ceremonies, conferences, concerts, and other events — providing tools for ticketing, nominations, public voting, live polls, and audience engagement.</div></div></div>
+                        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#g1">What is Tuqio Hub?</button></h2><div id="g1" class="accordion-collapse collapse show" data-bs-parent="#faqGeneral"><div class="accordion-body">Tuqio Hub is Africa's premier event management platform. We help organizers run awards ceremonies, conferences, concerts, and other events — providing tools for ticketing, nominations, public voting, live polls, and audience engagement.</div></div></div>
                         <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g2">Is Tuqio Hub free to use?</button></h2><div id="g2" class="accordion-collapse collapse" data-bs-parent="#faqGeneral"><div class="accordion-body">Browsing events, voting, and submitting nominations is completely free for the public. For event organizers, we offer flexible pricing plans. Contact us for a custom quote.</div></div></div>
                         <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g3">What types of events does Tuqio support?</button></h2><div id="g3" class="accordion-collapse collapse" data-bs-parent="#faqGeneral"><div class="accordion-body">Tuqio supports awards galas, industry conferences, community summits, music concerts, fundraising dinners, and more. If your event involves ticketing, nominations, or audience engagement, Tuqio is built for it.</div></div></div>
                         <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g4">How do I find events near me?</button></h2><div id="g4" class="accordion-collapse collapse" data-bs-parent="#faqGeneral"><div class="accordion-body">Visit the <a href="events" style="color:#ed1c24;">Events</a> page to browse all upcoming and past events. You can filter by date, category, and location.</div></div></div>

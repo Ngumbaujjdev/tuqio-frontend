@@ -14,12 +14,12 @@ $events      = $resp['events'] ?? [];
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Photo Gallery | Tuqio Hub</title>
-<meta name="description" content="Browse photos and highlights from Tuqio Hub events across Kenya — awards ceremonies, conferences, summits, and community moments.">
-<meta name="keywords" content="event photos Kenya, Tuqio Hub gallery, awards ceremony photos, Kenya events highlights, event photography Nairobi">
+<title>Event Photos & Highlights — Kenya Award Ceremonies & Gala Nights</title>
+<meta name="description" content="Browse photos and highlights from Tuqio Hub events across Kenya — awards ceremonies, conferences, gala dinners, summits, and community moments.">
+<meta name="keywords" content="event photos Kenya, Tuqio Hub gallery, awards ceremony photos Nairobi, Kenya events highlights, event photography Nairobi, gala dinner photos Kenya, IKWA photos, Kenya women awards gallery, award night photos, Nairobi event photography">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqiohub.africa/gallery.php">
+<link rel="canonical" href="https://tuqiohub.africa/gallery">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Photo Gallery | Tuqio Hub">
@@ -33,7 +33,7 @@ $events      = $resp['events'] ?? [];
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqiohub.africa/gallery.php">
+<meta property="og:url" content="https://tuqiohub.africa/gallery">
 <meta property="og:description" content="Browse photos and highlights from Tuqio Hub events across Kenya.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -50,17 +50,17 @@ $events      = $resp['events'] ?? [];
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Gallery","item":"https://tuqiohub.africa/gallery.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Gallery","item":"https://tuqiohub.africa/gallery"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Photo Gallery | Tuqio Hub","url":"https://tuqiohub.africa/gallery.php","description":"Browse photos and highlights from Tuqio Hub events."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Photo Gallery | Tuqio Hub","url":"https://tuqiohub.africa/gallery","description":"Browse photos and highlights from Tuqio Hub events."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

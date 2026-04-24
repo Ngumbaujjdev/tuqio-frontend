@@ -20,34 +20,34 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Home | Tuqio Hub</title>
-<meta name="description" content="Tuqio Hub — Kenya's premier event management platform powering nominations, voting, ticketing, and live events. Discover upcoming events and cast your vote.">
-<meta name="keywords" content="Tuqio Hub, Kenya events, event management, nominations Kenya, voting platform, awards Kenya, live events Nairobi">
+<title>Tuqio Hub — Africa's Premier Event, Voting & Awards Platform</title>
+<meta name="description" content="Tuqio Hub — Africa's premier event management platform powering nominations, voting, ticketing, and live events across Kenya and Africa. Discover upcoming events and cast your vote.">
+<meta name="keywords" content="Tuqio Hub, Africa event platform, event management Africa, awards platform Kenya Africa, nominations Africa, voting platform Africa, event ticketing Nairobi, live events Africa, gala dinner Kenya, Africa awards 2026, IKWA, Independent Kenya Women Awards, Nairobi events, online voting Africa, award ceremonies Africa, Kenya Africa conferences, event organizer Africa, best event platform Africa, East Africa events">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tuqiohub.africa/">
 
 <!-- Schema.org microdata -->
-<meta itemprop="name" content="Tuqio Hub — Kenya's Premier Event Hub">
-<meta itemprop="description" content="Kenya's premier event management platform powering nominations, voting, ticketing, and live events.">
+<meta itemprop="name" content="Tuqio Hub — Africa's Premier Event Hub">
+<meta itemprop="description" content="Africa's premier event management platform powering nominations, voting, ticketing, and live events.">
 <meta itemprop="image" content="<?= OG_IMAGE ?>">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Home | Tuqio Hub">
+<meta property="og:title" content="Tuqio Hub — Africa's Premier Event, Voting & Awards Platform">
 <meta property="og:type" content="website">
 <meta property="og:image" content="<?= OG_IMAGE ?>">
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://tuqiohub.africa/">
-<meta property="og:description" content="Kenya's premier event management platform powering nominations, voting, ticketing, and live events.">
+<meta property="og:description" content="Africa's premier event management platform powering nominations, voting, ticketing, and live events across Kenya and Africa.">
 <meta property="og:site_name" content="Tuqio Hub">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@tuqiohub">
-<meta name="twitter:title" content="Home | Tuqio Hub">
-<meta name="twitter:description" content="Kenya's premier event management platform powering nominations, voting, ticketing, and live events.">
+<meta name="twitter:title" content="Tuqio Hub — Africa's Premier Event, Voting & Awards Platform">
+<meta name="twitter:description" content="Africa's premier event management platform powering nominations, voting, ticketing, and live events across Kenya and Africa.">
 <meta name="twitter:image" content="<?= OG_IMAGE ?>">
 
 <!-- Google Analytics -->
@@ -56,12 +56,22 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform powering nominations, voting, ticketing, and live events.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"],"potentialAction":[{"@type":"ReadAction","target":"https://tuqiohub.africa/","description":"Africa's premier event management platform."},{"@type":"ReadAction","target":"https://tuqiohub.africa/events","description":"Browse all upcoming events in Kenya."},{"@type":"ReadAction","target":"https://tuqiohub.africa/vote","description":"Cast your vote for award nominees."},{"@type":"ReadAction","target":"https://tuqiohub.africa/nominate","description":"Submit a nomination for Kenya awards."},{"@type":"ReadAction","target":"https://tuqiohub.africa/ticket","description":"Buy tickets for Kenya events."},{"@type":"ReadAction","target":"https://tuqiohub.africa/blog","description":"Read Kenya events news and articles."},{"@type":"ReadAction","target":"https://tuqiohub.africa/gallery","description":"View event photos and highlights."},{"@type":"ReadAction","target":"https://tuqiohub.africa/about","description":"Learn about Tuqio Hub."},{"@type":"ReadAction","target":"https://tuqiohub.africa/contact","description":"Contact Tuqio Hub."}]}
 </script>
 
 <!-- JSON-LD: WebSite -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management platform powering nominations, voting, ticketing, and live events.","potentialAction":{"@type":"SearchAction","target":"https://tuqiohub.africa/events.php?q={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebSite","@id":"https://tuqiohub.africa/#website","name":"Tuqio Hub","url":"https://tuqiohub.africa","inLanguage":"en-US","alternateName":"Tuqio Hub — Africa's Premier Event Hub","description":"Africa's premier event management platform powering nominations, voting, ticketing, and live events.","potentialAction":{"@type":"SearchAction","target":"https://tuqiohub.africa/events?q={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
+
+<!-- JSON-LD: ImageObject -->
+<script type="application/ld+json">
+{"@context":"https://schema.org/","@type":"ImageObject","@id":"https://tuqiohub.africa/#primaryimage","inLanguage":"en-US","url":"https://tuqiohub.africa/assets/images/og/tuqio-og.webp","contentUrl":"https://tuqiohub.africa/assets/images/og/tuqio-og.webp","width":1200,"height":630}
+</script>
+
+<!-- JSON-LD: Site Navigation -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://tuqiohub.africa/#website","url":"https://tuqiohub.africa/","name":"Tuqio Hub","inLanguage":"en-US"},{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Events","url":"https://tuqiohub.africa/events"},{"@type":"ListItem","position":2,"name":"Vote","url":"https://tuqiohub.africa/vote"},{"@type":"ListItem","position":3,"name":"Nominate","url":"https://tuqiohub.africa/nominate"},{"@type":"ListItem","position":4,"name":"Tickets","url":"https://tuqiohub.africa/ticket"},{"@type":"ListItem","position":5,"name":"Blog","url":"https://tuqiohub.africa/blog"},{"@type":"ListItem","position":6,"name":"Gallery","url":"https://tuqiohub.africa/gallery"},{"@type":"ListItem","position":7,"name":"Polls","url":"https://tuqiohub.africa/polls"},{"@type":"ListItem","position":8,"name":"About","url":"https://tuqiohub.africa/about"},{"@type":"ListItem","position":9,"name":"Pricing","url":"https://tuqiohub.africa/pricing"},{"@type":"ListItem","position":10,"name":"Contact","url":"https://tuqiohub.africa/contact"}]}]}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
@@ -104,7 +114,7 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
 
                     <div class="content-box">
 
-                        <span class="title animate-1">Kenya's Premier Event Hub</span>
+                        <span class="title animate-1">Africa's Premier Event Hub</span>
 
                         <h2 class="animate-2">Discover, Attend &amp; Experience <br>Kenya's Best Events</h2>
 

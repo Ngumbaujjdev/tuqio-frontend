@@ -13,12 +13,12 @@ $voteEvents = array_filter($allEvents, fn($e) => ($e['current_phase'] ?? '') ===
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Cast Your Vote | Tuqio Hub</title>
+<title>Vote for Kenya Award Nominees — Online Voting Now Open</title>
 <meta name="description" content="Cast your vote for your favourite nominees on Tuqio Hub. Voting is open — support outstanding Kenyan talent and excellence.">
-<meta name="keywords" content="vote Kenya awards, cast your vote, Kenya nominees voting, Tuqio Hub vote, online voting Kenya">
+<meta name="keywords" content="vote Kenya awards, cast your vote online Kenya, Kenya nominees voting, Tuqio Hub vote, online voting Kenya, vote for nominees Kenya, Kenya awards vote 2026, IKWA voting, vote Kenya women awards, vote awards Nairobi, support Kenyan talent">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqiohub.africa/vote.php">
+<link rel="canonical" href="https://tuqiohub.africa/vote">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Cast Your Vote | Tuqio Hub">
@@ -32,7 +32,7 @@ $voteEvents = array_filter($allEvents, fn($e) => ($e['current_phase'] ?? '') ===
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqiohub.africa/vote.php">
+<meta property="og:url" content="https://tuqiohub.africa/vote">
 <meta property="og:description" content="Cast your vote for your favourite nominees on Tuqio Hub. Voting is open now.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -49,17 +49,17 @@ $voteEvents = array_filter($allEvents, fn($e) => ($e['current_phase'] ?? '') ===
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Vote","item":"https://tuqiohub.africa/vote.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Vote","item":"https://tuqiohub.africa/vote"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Cast Your Vote | Tuqio Hub","url":"https://tuqiohub.africa/vote.php","description":"Cast your vote for your favourite nominees on Tuqio Hub."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Cast Your Vote | Tuqio Hub","url":"https://tuqiohub.africa/vote","description":"Cast your vote for your favourite nominees on Tuqio Hub."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

@@ -28,12 +28,12 @@ if ($selectedSlug) {
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Nominate | Tuqio Hub</title>
+<title>Submit a Nomination — Kenya Awards 2026 — Nominate Someone Today</title>
 <meta name="description" content="Submit a nomination on Tuqio Hub. Recognise outstanding Kenyans in leadership, business, community, and more. Nominations are open now.">
-<meta name="keywords" content="nominate Kenya, submit nomination awards, Tuqio Hub nominations, Kenya awards nomination, recognise outstanding Kenyans">
+<meta name="keywords" content="nominate Kenya awards, submit nomination 2026, Tuqio Hub nominations, Kenya awards nomination form, recognise outstanding Kenyans, IKWA nominations, Kenya women awards nominate, nominate someone Kenya, leadership award nomination Kenya, community award Kenya">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqiohub.africa/nominate.php">
+<link rel="canonical" href="https://tuqiohub.africa/nominate">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Nominate | Tuqio Hub">
@@ -47,7 +47,7 @@ if ($selectedSlug) {
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqiohub.africa/nominate.php">
+<meta property="og:url" content="https://tuqiohub.africa/nominate">
 <meta property="og:description" content="Submit a nomination on Tuqio Hub. Recognise outstanding Kenyans in leadership, business, and community.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -64,17 +64,17 @@ if ($selectedSlug) {
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.facebook.com/share/p/1DJyLwtvqf/","https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Nominate","item":"https://tuqiohub.africa/nominate.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Nominate","item":"https://tuqiohub.africa/nominate"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Nominate | Tuqio Hub","url":"https://tuqiohub.africa/nominate.php","description":"Submit a nomination on Tuqio Hub. Recognise outstanding Kenyans."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Nominate | Tuqio Hub","url":"https://tuqiohub.africa/nominate","description":"Submit a nomination on Tuqio Hub. Recognise outstanding Kenyans."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

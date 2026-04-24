@@ -9,34 +9,34 @@ $stats = tuqio_api('/api/public/stats');
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>About Tuqio Hub | Kenya's Premier Event Platform</title>
-<meta name="description" content="Learn about Tuqio Hub — Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
-<meta name="keywords" content="about Tuqio Hub, Kenya event platform, awards management Kenya, event technology Nairobi, voting system Kenya">
+<title>About Tuqio Hub — The Team Behind Kenya's Event & Awards Platform</title>
+<meta name="description" content="Learn about Tuqio Hub — Africa's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
+<meta name="keywords" content="about Tuqio Hub, Kenya event management company, event technology Kenya, Nairobi event platform, awards management Kenya, who is Tuqio Hub, event organizer Kenya, Kenya awards platform, event technology Nairobi, voting system Kenya, best event company Kenya">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqiohub.africa/about.php">
+<link rel="canonical" href="https://tuqiohub.africa/about">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="About Tuqio Hub">
-<meta itemprop="description" content="Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
+<meta itemprop="description" content="Africa's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
 <meta itemprop="image" content="<?= OG_IMAGE ?>">
 
 <!-- Open Graph -->
-<meta property="og:title" content="About Tuqio Hub | Kenya's Premier Event Platform">
+<meta property="og:title" content="About Tuqio Hub | Africa's Premier Event Platform">
 <meta property="og:type" content="website">
 <meta property="og:image" content="<?= OG_IMAGE ?>">
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqiohub.africa/about.php">
-<meta property="og:description" content="Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
+<meta property="og:url" content="https://tuqiohub.africa/about">
+<meta property="og:description" content="Africa's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
 <meta property="og:site_name" content="Tuqio Hub">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@tuqiohub">
-<meta name="twitter:title" content="About Tuqio Hub | Kenya's Premier Event Platform">
-<meta name="twitter:description" content="Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
+<meta name="twitter:title" content="About Tuqio Hub | Africa's Premier Event Platform">
+<meta name="twitter:description" content="Africa's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls.">
 <meta name="twitter:image" content="<?= OG_IMAGE ?>">
 
 <!-- Google Analytics -->
@@ -45,17 +45,17 @@ $stats = tuqio_api('/api/public/stats');
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"About","item":"https://tuqiohub.africa/about.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"About","item":"https://tuqiohub.africa/about"}]}
 </script>
 
 <!-- JSON-LD: AboutPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"AboutPage","name":"About Tuqio Hub","url":"https://tuqiohub.africa/about.php","description":"Kenya's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls."}
+{"@context":"https://schema.org","@type":"AboutPage","name":"About Tuqio Hub","url":"https://tuqiohub.africa/about","description":"Africa's premier event management platform powering awards, conferences, nominations, voting, ticketing, and live polls."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
@@ -227,7 +227,7 @@ $stats = tuqio_api('/api/public/stats');
         <div>
             <div class="split-label">Who We Are</div>
             <h2 class="split-heading">Powering Kenya's Most Impactful Events</h2>
-            <p class="split-text">Tuqio Hub is Kenya's premier event management and engagement platform — built to power award ceremonies, conferences, nominations, voting, ticketing, and community polls, all from one place.</p>
+            <p class="split-text">Tuqio Hub is Africa's premier event management and engagement platform — built to power award ceremonies, conferences, nominations, voting, ticketing, and community polls, all from one place.</p>
             <p class="split-text">From small community awards to large national conferences, we provide the infrastructure event organizers need to run professional, engaging, and transparent events.</p>
             <a href="<?= ADMIN_URL ?>" target="_blank" rel="noopener" class="theme-btn btn-style-one" style="margin-top:8px;">
                 <span class="btn-title">Host an Event</span>

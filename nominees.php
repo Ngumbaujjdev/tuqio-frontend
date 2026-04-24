@@ -47,12 +47,12 @@ $globalIdx = 0;
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Nominees &amp; Finalists | <?= htmlspecialchars($eventName) ?> | Tuqio Hub</title>
+<title>Nominees &amp; Finalists — <?= htmlspecialchars($eventName) ?> — Tuqio Hub</title>
 <meta name="description" content="Meet the nominees and finalists for <?= htmlspecialchars($eventName) ?>. Browse all categories and vote for your favourites on Tuqio Hub.">
-<meta name="keywords" content="nominees Kenya, finalists awards Kenya, vote nominees, <?= htmlspecialchars($eventName) ?>, Tuqio Hub voting">
+<meta name="keywords" content="nominees Kenya, award finalists Kenya, vote nominees Kenya, <?= htmlspecialchars($eventName) ?>, Tuqio Hub voting, Kenya award nominees 2026, IKWA nominees, Kenya women awards finalists, best of Kenya nominees, award categories Kenya">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqiohub.africa/nominees.php">
+<link rel="canonical" href="https://tuqiohub.africa/nominees">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Nominees &amp; Finalists | <?= htmlspecialchars($eventName) ?>">
@@ -66,7 +66,7 @@ $globalIdx = 0;
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqiohub.africa/nominees.php">
+<meta property="og:url" content="https://tuqiohub.africa/nominees">
 <meta property="og:description" content="Meet the nominees and finalists for <?= htmlspecialchars($eventName) ?>. Vote on Tuqio Hub.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -83,17 +83,17 @@ $globalIdx = 0;
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.facebook.com/share/p/1DJyLwtvqf/","https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Nominees","item":"https://tuqiohub.africa/nominees.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Nominees","item":"https://tuqiohub.africa/nominees"}]}
 </script>
 
 <!-- JSON-LD: WebPage -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Nominees & Finalists | Tuqio Hub","url":"https://tuqiohub.africa/nominees.php","description":"Meet the nominees and finalists. Vote for your favourites on Tuqio Hub."}
+{"@context":"https://schema.org","@type":"WebPage","name":"Nominees & Finalists | Tuqio Hub","url":"https://tuqiohub.africa/nominees","description":"Meet the nominees and finalists. Vote for your favourites on Tuqio Hub."}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

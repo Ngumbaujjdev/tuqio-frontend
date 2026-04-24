@@ -43,7 +43,7 @@ $seoPostDesc  = htmlspecialchars(strip_tags($post['excerpt'] ?? mb_substr($post[
 $seoPostDesc  = mb_strimwidth($seoPostDesc, 0, 160, '...');
 $seoPostImg   = !empty($featImg) ? API_STORAGE . $featImg : OG_IMAGE;
 $seoPostSlug  = urlencode($post['slug'] ?? '');
-$seoPostUrl   = 'https://tuqiohub.africa/blog-single.php?slug=' . $seoPostSlug;
+$seoPostUrl   = 'https://tuqiohub.africa/blog-single?slug=' . $seoPostSlug;
 $seoPostDate  = $post['published_at'] ?? $post['created_at'] ?? '';
 ?>
 
@@ -85,12 +85,12 @@ $seoPostDate  = $post['published_at'] ?? $post['created_at'] ?? '';
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tuqiohub.africa/blog.php"},{"@type":"ListItem","position":3,"name":"<?= addslashes($post['title'] ?? '') ?>","item":"<?= $seoPostUrl ?>"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tuqiohub.africa/blog"},{"@type":"ListItem","position":3,"name":"<?= addslashes($post['title'] ?? '') ?>","item":"<?= $seoPostUrl ?>"}]}
 </script>
 
 <!-- JSON-LD: Article -->

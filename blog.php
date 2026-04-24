@@ -25,12 +25,12 @@ $totalItems  = $resp['total'] ?? 0;
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Articles &amp; News | Tuqio Hub</title>
-<meta name="description" content="Stay up to date with the latest news, articles, and event updates from Tuqio Hub — Kenya's premier event management platform.">
-<meta name="keywords" content="Tuqio Hub blog, Kenya events news, awards articles Kenya, event updates Nairobi, Tuqio Hub articles">
+<title>Kenya Events &amp; Awards News — Articles, Updates &amp; Stories</title>
+<meta name="description" content="Stay up to date with the latest news, articles, and event updates from Tuqio Hub — Africa's premier event management platform.">
+<meta name="keywords" content="Tuqio Hub blog, Kenya events news, awards news Kenya, event articles Nairobi, Kenya awards updates, event planning Kenya, IKWA news, Kenya women awards news, Nairobi event updates, event industry Kenya, awards ceremony Kenya news">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tuqiohub.africa/blog.php">
+<link rel="canonical" href="https://tuqiohub.africa/blog">
 
 <!-- Schema.org microdata -->
 <meta itemprop="name" content="Articles & News | Tuqio Hub">
@@ -44,7 +44,7 @@ $totalItems  = $resp['total'] ?? 0;
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://tuqiohub.africa/blog.php">
+<meta property="og:url" content="https://tuqiohub.africa/blog">
 <meta property="og:description" content="Latest news, articles, and event updates from Tuqio Hub.">
 <meta property="og:site_name" content="Tuqio Hub">
 
@@ -61,17 +61,17 @@ $totalItems  = $resp['total'] ?? 0;
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://www.facebook.com/share/p/1DJyLwtvqf/","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tuqiohub.africa/blog.php"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuqiohub.africa/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tuqiohub.africa/blog"}]}
 </script>
 
 <!-- JSON-LD: Blog -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Blog","name":"Articles & News | Tuqio Hub","url":"https://tuqiohub.africa/blog.php","description":"Latest news, articles, and updates from Tuqio Hub.","publisher":{"@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa"}}
+{"@context":"https://schema.org","@type":"Blog","name":"Articles & News | Tuqio Hub","url":"https://tuqiohub.africa/blog","description":"Latest news, articles, and updates from Tuqio Hub.","publisher":{"@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa"}}
 </script>
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">

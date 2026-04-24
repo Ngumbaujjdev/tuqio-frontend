@@ -8,9 +8,9 @@ include 'libs/App.php';
 <meta charset="utf-8">
 
 <!-- SEO -->
-<title>Pricing | Tuqio Hub — Transparent Event Platform Fees</title>
+<title>Simple, Transparent Pricing — No Setup Fees, Pay as You Earn</title>
 <meta name="description" content="Simple, transparent pricing for Tuqio Hub. Pay only when you earn — 5% on ticketing and from 20% on voting. No setup fees, no monthly subscription.">
-<meta name="keywords" content="Tuqio Hub pricing, event ticketing fees Kenya, voting platform pricing, event management cost Kenya, affordable ticketing platform">
+<meta name="keywords" content="Tuqio Hub pricing, event ticketing fees Kenya, voting platform cost Kenya, event management pricing Nairobi, affordable event platform Africa, pay as you earn event platform, event technology pricing Kenya, awards platform cost, no setup fee event platform Kenya">
 <meta name="author" content="Tuqio Hub">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tuqiohub.africa/pricing">
@@ -44,7 +44,7 @@ include 'libs/App.php';
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{"@context":"https://schema.org/","@type":"Organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","description":"Kenya's premier event management and awards platform.","contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support"},"sameAs":["https://www.facebook.com/share/p/1DJyLwtvqf/","https://www.instagram.com/p/DV0RJ11ii-7/?igsh=MXNiemxwbXdzMzJ6aw==","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke"]}
+{"@context":"https://schema.org/","@type":"Organization","@id":"https://tuqiohub.africa/#organization","name":"Tuqio Hub","url":"https://tuqiohub.africa","logo":"https://tuqiohub.africa/assets/images/favicon/favicon-96x96.png","description":"Africa's premier event management and awards platform powering nominations, voting, ticketing, and live events across Kenya and Africa.","foundingDate":"2023","foundingLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Nairobi","addressRegion":"Nairobi","addressCountry":"Kenya"}},"contactPoint":{"@type":"ContactPoint","telephone":"+254757140682","email":"info@tuqiohub.africa","contactType":"customer support","availableLanguage":"en-US"},"sameAs":["https://www.instagram.com/tuqiohubke/","https://www.facebook.com/tuqiohub","https://twitter.com/tuqiohub","https://www.tiktok.com/@tuqiohubke","https://www.linkedin.com/company/tuqiohub"]}
 </script>
 
 <!-- JSON-LD: BreadcrumbList -->
