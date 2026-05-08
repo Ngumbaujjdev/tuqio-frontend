@@ -43,8 +43,51 @@ define("ADMIN_URL", API_BASE . "/login");
 define("TUQIO_NAVY",  "#1e1548");
 define("TUQIO_RED",   "#ed1c24");
 
+// ─── API response cache (file-based, shared across all PHP processes) ─────
+define("API_CACHE_DIR", __DIR__ . '/../cache/api');
+
+function tuqio_api_cache_get(string $key): ?array {
+    $file = API_CACHE_DIR . '/' . $key . '.json';
+    if (!file_exists($file)) return null;
+    $meta = json_decode(file_get_contents($file), true);
+    if (!$meta || time() > $meta['expires']) return null;
+    return $meta['data'];
+}
+
+function tuqio_api_cache_set(string $key, array $data, int $ttl): void {
+    if (!is_dir(API_CACHE_DIR)) mkdir(API_CACHE_DIR, 0755, true);
+    file_put_contents(
+        API_CACHE_DIR . '/' . $key . '.json',
+        json_encode(['expires' => time() + $ttl, 'data' => $data]),
+        LOCK_EX
+    );
+    // Prune expired files on ~1% of writes so the directory doesn't grow forever
+    if (random_int(1, 100) === 1) {
+        foreach (glob(API_CACHE_DIR . '/*.json') as $f) {
+            $meta = json_decode(@file_get_contents($f), true);
+            if (!$meta || time() > $meta['expires']) @unlink($f);
+        }
+    }
+}
+
 // ─── API helper (GET) ──────────────────────────────────────────────────────
-function tuqio_api(string $path): array {
+// $ttl: cache lifetime in seconds. 0 = no cache (use for POST-driven data).
+// Default TTLs: nominees 120s, vote-bundles 600s, everything else 60s.
+function tuqio_api(string $path, int $ttl = 60): array {
+    // Derive TTL from endpoint if not overridden
+    if ($ttl === 60) {
+        if (str_contains($path, '/nominees'))    $ttl = 120;
+        if (str_contains($path, '/vote-bundles'))$ttl = 600;
+        if (str_contains($path, '/vote-counts')) $ttl = 0;  // always fresh (JS handles this)
+    }
+
+    $cacheKey = md5($path);
+
+    if ($ttl > 0) {
+        $cached = tuqio_api_cache_get($cacheKey);
+        if ($cached !== null) return $cached;
+    }
+
     $url = API_BASE . $path;
     $ch  = curl_init($url);
     curl_setopt_array($ch, [
@@ -55,7 +98,13 @@ function tuqio_api(string $path): array {
     ]);
     $body = curl_exec($ch);
     curl_close($ch);
-    return json_decode($body ?: '[]', true) ?? [];
+    $data = json_decode($body ?: '[]', true) ?? [];
+
+    if ($ttl > 0 && !empty($data)) {
+        tuqio_api_cache_set($cacheKey, $data, $ttl);
+    }
+
+    return $data;
 }
 
 // ─── API helper (POST) ─────────────────────────────────────────────────────
