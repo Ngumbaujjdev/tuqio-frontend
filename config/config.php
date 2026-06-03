@@ -31,7 +31,7 @@ define("OG_IMAGE", $isNew
 // ─── v1-backend API ────────────────────────────────────────────────────────
 define("API_BASE", match(true) {
     $isLocal => "http://localhost:8000",
-    $isNew   => "https://platform.tuqiohub.africa",
+    $isNew   => "https://tuqio.hekimaconsult.co.ke",
     default  => "https://platform.independentkenyawomenawards.com",
 });
 define("API_STORAGE", API_BASE . "/storage/");
