@@ -180,12 +180,128 @@ i.fa, i.fas, i.fab, i.far {
 /* ── Event cards (Featured Events) — equal height ── */
 .news-section .row { display: flex; flex-wrap: wrap; }
 .news-block { display: flex; flex-direction: column; }
-.news-block .inner-box { display: flex; flex-direction: column; height: 100%; }
+.news-block .inner-box { display: flex; flex-direction: column; height: 100%; box-shadow: 0 6px 22px rgba(30,21,72,.09); }
 .news-block .lower-content { flex: 1; display: flex; flex-direction: column; }
 .news-block .lower-content .btn-box { margin-top: auto; padding-top: 16px; }
-.event-card-img { width: 100%; height: 230px; object-fit: cover; display: block; }
+.news-block .lower-content h4 { min-height: 2.7em; line-height: 1.35; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Fixed-height frame: same height for all 3 cards, poster fills edge-to-edge, top-anchored */
+.event-card-frame {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.event-card-frame a { display: block; height: 100%; }
+.event-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+/* ── Corner badge (New / Trending / Featured) ── */
+.badge-corner {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,.95);
+    color: #1e1548;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.25);
+}
+.badge-corner.badge-new { color: #0d8a3f; }
+.badge-corner.badge-trending { color: #ed1c24; }
+.badge-corner i { font-size: 11px; }
+
+/* ── Feature pills (Tickets / Voting / Nominations / RSVP) ── */
+.news-block .feature-pills {
+    list-style: none;
+    margin: 2px 0 4px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.news-block .feature-pills li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f3f2f8;
+    color: #1e1548;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 20px;
+}
+.news-block .feature-pills li i { color: #ed1c24; font-size: 11px; }
+
 .news-block .lower-content .event-card-btn { margin-top: auto; }
 .news-block .lower-content .text { color: #666; font-size: 0.9rem; line-height: 1.75; margin-bottom: 0; -webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ── Date / location row ── */
+.news-block .post-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 14px;
+}
+.news-block .post-info li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5a5470;
+}
+.news-block .post-info li span {
+    color: #ed1c24;
+    font-size: 13px;
+}
+
+/* Date pill — first item stands out from the plain venue/format text beside it */
+.news-block .post-info li:first-child {
+    background: #fdecec;
+    color: #ed1c24;
+    padding: 6px 13px 6px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+.news-block .post-info li:first-child span {
+    background: #ed1c24;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+/* ── View Details button ── */
+.news-block .event-card-btn .theme-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
 
 /* ── Event phase tag colours ── */
 .event-phase-tag { text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.5px; }

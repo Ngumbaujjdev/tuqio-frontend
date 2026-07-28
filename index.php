@@ -76,7 +76,7 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
 <link href="<?= SITE_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/style.css" rel="stylesheet">
 <link href="<?= SITE_URL ?>/assets/css/responsive.css" rel="stylesheet">
-<link href="<?= SITE_URL ?>/assets/css/custom.css" rel="stylesheet">
+<link href="<?= SITE_URL ?>/assets/css/custom.css?v=<?= filemtime(__DIR__ . '/assets/css/custom.css') ?>" rel="stylesheet">
 <link rel="icon" type="image/png" href="<?= SITE_URL ?>/assets/images/favicon/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="<?= SITE_URL ?>/assets/images/favicon/favicon.svg">
 <link rel="shortcut icon" href="<?= SITE_URL ?>/assets/images/favicon/favicon.ico">
@@ -209,6 +209,12 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
                 $phase  = $ev['current_phase'] ?? '';
                 $phaseLabels = ['voting' => 'Voting Open', 'on_sale' => 'Tickets On Sale', 'nomination' => 'Nominations Open', 'upcoming' => 'Upcoming'];
                 $phaseLabel  = $phaseLabels[$phase] ?? '';
+                $badges = [
+                    ['label' => 'New',      'class' => 'badge-new',      'icon' => 'fa-sparkles'],
+                    ['label' => 'Trending', 'class' => 'badge-trending', 'icon' => 'fa-fire'],
+                    ['label' => 'Featured', 'class' => '',               'icon' => 'fa-star'],
+                ];
+                $badge = $badges[$i % count($badges)];
             ?>
             <div class="news-block style-four col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="<?= ($i % 3) * 150 ?>ms">
                 <div class="inner-box">
@@ -216,8 +222,9 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
                         <?php if ($phaseLabel): ?>
                         <span class="tag event-phase-tag event-phase-<?= htmlspecialchars($phase) ?>"><?= $phaseLabel ?></span>
                         <?php endif; ?>
+                        <span class="badge-corner <?= $badge['class'] ?>"><i class="fas <?= $badge['icon'] ?>"></i><?= $badge['label'] ?></span>
                         <?php if ($hasImage): ?>
-                        <figure class="image">
+                        <figure class="image event-card-frame">
                             <a href="<?= SITE_URL ?>/event-detail?slug=<?= urlencode($ev['slug']) ?>">
                                 <img src="<?= htmlspecialchars($banner) ?>"
                                      alt="<?= htmlspecialchars($ev['name']) ?>"
@@ -233,13 +240,27 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
                         </a>
                         <?php endif; ?>
                     </div>
+                    <?php
+                        $venue = trim((($ev['venue_name'] ?? '') ? $ev['venue_name'] . ', ' : '') . ($ev['venue_city'] ?? ''), ', ');
+                        $pills = [];
+                        if (!empty($ev['has_ticketing']))    $pills[] = ['icon' => 'fa-ticket-alt', 'label' => 'Tickets'];
+                        if (!empty($ev['has_voting']))       $pills[] = ['icon' => 'fa-vote-yea',   'label' => 'Voting'];
+                        if (!empty($ev['has_nominations']))  $pills[] = ['icon' => 'fa-award',      'label' => 'Nominations'];
+                        if (!empty($ev['has_registration'])) $pills[] = ['icon' => 'fa-user-check', 'label' => 'RSVP'];
+                        $formatBadge = null;
+                        if (!empty($ev['is_virtual']))                     $formatBadge = ['icon' => 'fa-video',       'label' => 'Virtual'];
+                        elseif (($ev['event_format'] ?? '') === 'hybrid')   $formatBadge = ['icon' => 'fa-layer-group', 'label' => 'Hybrid'];
+                    ?>
                     <div class="lower-content">
                         <ul class="post-info">
                             <?php if (!empty($ev['start_date'])): ?>
                             <li><span class="far fa-calendar-alt"></span> <?= date('d M Y', strtotime($ev['start_date'])) ?></li>
                             <?php endif; ?>
-                            <?php if (!empty($ev['venue_city'])): ?>
-                            <li><span class="fas fa-map-marker-alt"></span> <?= htmlspecialchars($ev['venue_city']) ?></li>
+                            <?php if ($venue): ?>
+                            <li><span class="fas fa-map-marker-alt"></span> <?= htmlspecialchars($venue) ?></li>
+                            <?php endif; ?>
+                            <?php if ($formatBadge): ?>
+                            <li><span class="fas <?= $formatBadge['icon'] ?>"></span> <?= $formatBadge['label'] ?></li>
                             <?php endif; ?>
                         </ul>
                         <h4><a href="<?= SITE_URL ?>/event-detail?slug=<?= urlencode($ev['slug']) ?>"><?= htmlspecialchars($ev['name']) ?></a></h4>
@@ -247,6 +268,13 @@ $blogPosts  = array_slice($blogResp['data'] ?? [], 0, 3);
                         <div class="text"><?= htmlspecialchars($ev['tagline']) ?></div>
                         <?php elseif (!empty($ev['short_description'])): ?>
                         <div class="text"><?= htmlspecialchars(mb_substr($ev['short_description'], 0, 110)) ?>...</div>
+                        <?php endif; ?>
+                        <?php if ($pills): ?>
+                        <ul class="feature-pills">
+                            <?php foreach ($pills as $p): ?>
+                            <li><i class="fas <?= $p['icon'] ?>"></i><?= $p['label'] ?></li>
+                            <?php endforeach; ?>
+                        </ul>
                         <?php endif; ?>
                         <div class="btn-box event-card-btn">
                             <a href="<?= SITE_URL ?>/event-detail?slug=<?= urlencode($ev['slug']) ?>" class="theme-btn btn-style-one"><span class="btn-title">View Details</span></a>

@@ -13,7 +13,7 @@ define("SITE_URL", match(true) {
     default  => "https://tuqio.independentkenyawomenawards.com",
 });
 define("SITE_NAME",   "Tuqio Hub");
-define("ADMIN_EMAIL", $isNew ? "info@tuqiohub.africa" : "tuqiohub@independentkenyawomenawards.com");
+define("ADMIN_EMAIL", "info@tuqiohub.africa");
 define("SITE_PHONE",  "+254757140682");
 
 // ─── Social ────────────────────────────────────────────────────────────────
